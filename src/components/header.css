@@ -1,0 +1,13 @@
+.header-style{
+    background: linear-gradient(90deg, rgba(4,51,83,1) 0%, rgba(18,106,166,1)  100%);
+}
+
+.header-button-style:hover{
+    background: linear-gradient(145deg, #042e4b, #043759);
+    box-shadow: 2px 2px 5px #021421,-1px -1px 4px #065285;
+}
+
+.header-pressed-button-style{
+    background: #E44652;
+    box-shadow:  inset 4px 4px 5px #5b1c21,inset -4px -4px 5px #ff7083;
+}

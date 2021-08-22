@@ -1,0 +1,10 @@
+.ue-card:hover{
+    transform: scale(0.97);
+}
+.blog-card:hover{
+    transform: scale(0.97)
+}
+
+.blog-card{
+    transform: scale(0.92)
+}

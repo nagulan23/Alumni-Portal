@@ -1,25 +1,52 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react';
+import { Route, Redirect, Switch } from "react-router-dom";
+import Signin from './components/signin';
+import Header from './components/header';
+import Loading from './components/loading';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends Component {
+  state = { 
+    login:true,
+    link:"/"
+  }
+
+  constructor(props){
+    super(props);
+    setTimeout(this.checkLogin.bind(this), 0)
+  }
+
+  checkLogin(){
+    if(this.state.login)
+      this.setState({ link:"/home"});
+    else
+      this.setState({ link:"/signin"});
+  }
+
+  render(){
+    return ( 
+      <React.Fragment>
+        <Switch>
+          <Route exact path="/">
+            <Loading />
+          </Route>
+          <Route exact path="/signin">
+            <Signin />
+          </Route>
+          <Route exact path="/home">
+            <Header />
+          </Route>
+          <Route exact path="/donate">
+            <Header />
+          </Route>
+        </Switch>
+      </React.Fragment>
+     );
+  }
 }
-
+ 
 export default App;
+
+//<Redirect to={this.state.link} />
