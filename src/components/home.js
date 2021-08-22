@@ -158,8 +158,8 @@ class Highlight extends Component {
     }
     render() { 
         return ( 
-            <Carousel autoPlay={true} showArrows={false} showThumbs={false} showIndicators={false} showStatus={false} infiniteLoop={true} interval={10000}>
-                <div style={{height:"400px",position:"relative",display:"flex",alignItems:"center"}}>
+            <Carousel autoPlay={true} showArrows={false} showThumbs={false} showIndicators={false} showStatus={false} infiniteLoop={true} interval={2000}>
+                <div style={{height:"420px",position:"relative",display:"flex",alignItems:"center"}}>
                     <div style={{width:"100%",position:"absolute",display:"flex",justifyContent:"space-between"}}>
                         <div style={{paddingLeft:"50px"}}>
                             <img src="https://www.amrita.edu/sites/default/files/cutting-life-amrita.png" alt="" style={{objectFit:"contain",height:"400px",width:"100%",boxShadow:"0 0 10px black",borderRadius:"200px"}}/>
@@ -175,7 +175,7 @@ class Highlight extends Component {
                         </div>
                     </div>
                 </div>
-                <div style={{height:"400px",position:"relative",display:"flex",alignItems:"center"}}>
+                <div style={{height:"420px",position:"relative",display:"flex",alignItems:"center"}}>
                     <div style={{width:"100%",position:"absolute",display:"flex",justifyContent:"space-between"}}>
                         <div style={{paddingLeft:"50px"}}>
                             <img src="https://www.amrita.edu/sites/default/files/studentclub-life-amrita.png" alt="" style={{objectFit:"contain",height:"400px",width:"100%",boxShadow:"0 0 10px black",borderRadius:"200px"}}/>
@@ -191,7 +191,7 @@ class Highlight extends Component {
                         </div>
                     </div>
                 </div>
-                <div style={{height:"400px",position:"relative",display:"flex",alignItems:"center"}}>
+                <div style={{height:"420px",position:"relative",display:"flex",alignItems:"center"}}>
                     <div style={{width:"100%",position:"absolute",display:"flex",justifyContent:"space-between"}}>
                         <div style={{paddingLeft:"50px"}}>
                             <img src="https://www.amrita.edu/sites/default/files/culturalfest-life-amrita.png" alt="" style={{objectFit:"contain",height:"400px",width:"100%",boxShadow:"0 0 10px black",borderRadius:"200px"}}/>
@@ -208,7 +208,7 @@ class Highlight extends Component {
                         </div>
                     </div>
                 </div>
-                <div style={{height:"400px",position:"relative",display:"flex",alignItems:"center"}}>
+                <div style={{height:"420px",position:"relative",display:"flex",alignItems:"center"}}>
                     <div style={{width:"100%",position:"absolute",display:"flex",justifyContent:"space-between"}}>
                         <div style={{paddingLeft:"50px"}}>
                             <img src="https://www.amrita.edu/sites/default/files/sport-life-amrita.png" alt="" style={{objectFit:"contain",height:"400px",width:"100%",boxShadow:"0 0 10px black",borderRadius:"200px"}}/>
