@@ -6,9 +6,9 @@ import Home from './home';
 import './header.css';
 import Avatar from '@material-ui/core/Avatar';
 import { IconButton } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SearchIcon from '@material-ui/icons/Search';
 import DonatePage from './donate';
+import ProfilePage from './profile';
 import { withRouter } from "react-router-dom";
 
 class Header extends Component {
@@ -17,16 +17,23 @@ class Header extends Component {
     }
 
     pageChange(pgno){
-        this.setState({page:pgno});
-        if(pgno===4)
+        if(pgno===4){
+            this.setState({page:pgno});
             this.props.history.push("/donate");
-        if(pgno===1)
+        }
+        if(pgno===1){
+            this.setState({page:pgno});
             this.props.history.push("/home");
+        }
+        if(pgno===0){
+            this.setState({page:1});
+            this.props.history.push("/profile");
+        }
     }
 
     render() { 
         return ( 
-            <div style={{backgroundColor:"#FAF8F0",height:"100%",width:"100%",position:"absolute",display:"flex",flexDirection:"column"}}>
+            <div style={{backgroundColor:"#FAF8F0",width:"100%",position:"absolute",display:"flex",flexDirection:"column"}}>
                 <div className="header-style" style={{fontWeight:"500",width:"calc( 100% - 40px )",color:"#FAF8F0",padding:"10px",paddingLeft:"20px",paddingRight:"20px",boxShadow:"0 0 10px black",zIndex:1,display:"flex",alignItems:"Center",justifyContent:"space-between"}}>
                     <div  style={{display:"flex",alignItems:"center"}}>
                         <div style={{fontFamily:"'Dancing Script', cursive",fontSize:"25px",color:"#E44652 "}}>
@@ -56,20 +63,19 @@ class Header extends Component {
                             Donate
                         </div>
                     </div>
-                    <div style={{display:"flex",alignItems:"center"}}>
+                    <div style={{display:"flex",alignItems:"center",paddingRight:"30px"}}>
                         <IconButton >
                             <SearchIcon style={{color:"white"}}/>
                         </IconButton>
                         <div style={{width:"1px",backgroundColor:"rgba(255,255,255,0.3)",height:"50px"}}/>
-                        <div style={{border:"2px solid #E44652 ", borderRadius:"50px",padding:"3px",marginLeft:"10px"}}>
-                            <Avatar alt="Remy Sharp" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+                        <div style={{display:'flex',alignItems:"center",cursor:"pointer"}} onClick={this.pageChange.bind(this,0)}>
+                            <div style={{border:"2px solid #E44652 ", borderRadius:"50px",padding:"3px",marginLeft:"10px"}}>
+                                <Avatar alt="Remy Sharp" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+                            </div>
+                            <div style={{paddingLeft:"10px",fontWeight:"500",color:"#FAF8F0",maxWidth:"150px",textOverflow:"ellipsis",overflow:"hidden",whiteSpace:"nowrap"}}>
+                                Nagulan S
+                            </div>
                         </div>
-                        <div style={{paddingLeft:"10px",fontWeight:"500",color:"#FAF8F0",maxWidth:"150px",textOverflow:"ellipsis",overflow:"hidden",whiteSpace:"nowrap"}}>
-                            Nagulan S
-                        </div>
-                        <IconButton >
-                            <ExpandMoreIcon style={{color:"white"}}/>
-                        </IconButton>
                     </div>
                 </div>
                 <Switch>
@@ -81,6 +87,9 @@ class Header extends Component {
                     </Route>
                     <Route exact path="/donate">
                         <DonatePage />
+                    </Route>
+                    <Route exact path="/profile">
+                        <ProfilePage />
                     </Route>
                 </Switch>
                 <div style={{backgroundColor:"#282726",width:"calc( 100% - 70px )",padding:"20px",paddingLeft:"20px",paddingRight:"50px",boxShadow:"0 0 10px black",display:"flex",flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>

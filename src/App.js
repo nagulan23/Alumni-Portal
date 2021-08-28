@@ -4,12 +4,13 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import Signin from './components/signin';
 import Header from './components/header';
 import Loading from './components/loading';
+import ProfilePage from './components/profile';
 import { withRouter } from "react-router-dom";
 
 
 
 class App extends Component {
-  state = { 
+  state = {
     login:true,
   }
 
@@ -20,10 +21,12 @@ class App extends Component {
 
   checkLogin(){
     console.log("..");
-    if(this.state.login)
-      this.props.history.push("/home");
+    if(this.state.login){
+      if(this.props.location.pathname==="/")
+        this.props.history.push("/home");
+    }
     else
-      this.props.history.push("/donate");
+      this.props.history.push("/signin");
   }
 
   render(){
@@ -40,6 +43,9 @@ class App extends Component {
             <Header />
           </Route>
           <Route exact path="/donate">
+            <Header />
+          </Route>
+          <Route exact path="/profile">
             <Header />
           </Route>
         </Switch>

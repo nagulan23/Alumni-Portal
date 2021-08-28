@@ -5,8 +5,8 @@ class DonationPage extends Component {
     state = {  }
     render() { 
         return ( 
-            <div style={{backgroundColor:"#E44652",minHeight:"calc( 100% )"}}>
-                <div style={{ width:"100%",height:"80%",borderTopRightRadius:" 100% 100%",backgroundColor:"#FAF8F0 ",boxShadow:"inset -10px 10px 10px gray",marginTop:"30px"}}>
+            <div style={{backgroundColor:"#E44652",height:"100vh"}}>
+                <div style={{ width:"100%",height:"80%",borderTopRightRadius:" 100% 100%",backgroundColor:"#FAF8F0",boxShadow:"inset 0px 10px 10px gray",marginTop:"30px"}}>
                 </div>
                 <div style={{width:"100%",height:"20%",backgroundColor:"#FAF8F0 "}}>
                 </div>

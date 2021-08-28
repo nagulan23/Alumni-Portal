@@ -50,7 +50,7 @@ class Home extends Component {
                         <img src={c9} alt="" style={{objectFit:"contain",width:"10%"}}/>
                         <img src={c10} alt="" style={{objectFit:"contain",width:"10%"}}/>
                     </div>
-                    <button style={{width:"300px",border:"0",backgroundColor:"#E4DFCF",color:"#E44652",fontSize:"20px",fontWeight:"600",padding:"7px",borderRadius:"10px",marginTop:"20px"}}>View Openings</button>
+                    <button style={{width:"300px",border:"0",backgroundColor:"#E4DFCF",color:"#E44652",fontSize:"20px",fontWeight:"600",padding:"7px",borderRadius:"10px",marginTop:"20px",cursor:"pointer"}}>View Openings</button>
                 </div>
                 <div style={{display:"flex",flexDirection:"column",margin:"50px"}}>
                     <div style={{display:"flex",flexDirection:"row",alignItems:"flex-end"}}>
