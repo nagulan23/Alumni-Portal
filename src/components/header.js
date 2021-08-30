@@ -10,7 +10,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import DonatePage from './donate';
 import ProfilePage from './profile';
 import Jobpager from './job/jobpager';
-import Pagebuilder from './job/pagebuilder'
+import Pagebuilder from './job/pagebuilder';
+import BlogPage from './Blog/blog';
+import InBlogPage from './Blog/inblog';
 import { withRouter } from "react-router-dom";
 
 class Header extends Component {
@@ -31,6 +33,10 @@ class Header extends Component {
             this.setState({page:pgno});
             this.props.history.push("/job");
         }
+        if(pgno===3){
+           this.setState({page:pgno});
+           this.props.history.push("/blog");
+       }
         if(pgno===0){
             this.setState({page:1});
             this.props.history.push("/profile");
@@ -102,6 +108,12 @@ class Header extends Component {
                     </Route>
                     <Route exact path="/job">
                         <Pagebuilder/>
+                    </Route>
+                    <Route exact path="/inblog">
+                        <InBlogPage/>
+                    </Route>
+                    <Route exact path="/blog">
+                        <BlogPage/>
                     </Route>
                 </Switch>
                 <div style={{backgroundColor:"#282726",width:"calc( 100% - 70px )",padding:"20px",paddingLeft:"20px",paddingRight:"50px",boxShadow:"0 0 10px black",display:"flex",flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>

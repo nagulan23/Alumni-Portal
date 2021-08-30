@@ -52,6 +52,12 @@ class App extends Component {
           <Route exact path="/job">
             <Header/>
           </Route>
+          <Route exact path="/inblog">
+            <Header/>
+          </Route>
+          <Route exact path="/blog">
+            <Header/>
+          </Route>
         </Switch>
       </React.Fragment>
      );
