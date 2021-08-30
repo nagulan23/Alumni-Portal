@@ -1,7 +1,7 @@
 import React from "react"
 import "./jobpage.css"
-import img from "../assets/cardinalhealth.png"
-import leo from '../assets/7_Leonardo-Dicaprio.jpg'
+import img from "../../assets/cardinalhealth.png"
+import leo from '../../assets/7_Leonardo-Dicaprio.jpg'
 import WorkOutlineOutlinedIcon from "@material-ui/icons/WorkOutlineOutlined"
 import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined"
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney"
@@ -29,6 +29,8 @@ function Jobpage() {
           flexDirection: "column",
           paddingLeft: "150px",
           paddingRight: "150px",
+          paddingTop:"50px",
+          paddingBottom:"50px"
         }}
       >
         <div className="Box1">

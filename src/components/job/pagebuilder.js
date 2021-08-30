@@ -1,7 +1,7 @@
 import React from 'react'
 import Jobfilter from "./Jobfilter"
 import Jobcard from "./jobcard"
-import footer_logo from "../assets/transparent-logo.png"
+import footer_logo from "../../assets/transparent-logo.png"
 function Pagebuilder() {
     return (
         <div>

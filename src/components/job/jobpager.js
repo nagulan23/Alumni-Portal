@@ -1,5 +1,4 @@
 import React from 'react'
-import footer_logo from "../assets/transparent-logo.png"
 import Jobpage from "./Jobpage"
 function Jobpager() {
     return (

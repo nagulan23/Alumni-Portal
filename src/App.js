@@ -4,10 +4,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import Signin from './components/signin';
 import Header from './components/header';
 import Loading from './components/loading';
-import ProfilePage from './components/profile';
 import { withRouter } from "react-router-dom";
-import Jobpager from "./job/jobpager"
-import Pagebuilder from "./job/pagebuilder"
 
 
 class App extends Component {
@@ -50,10 +47,10 @@ class App extends Component {
             <Header />
           </Route>
           <Route exact path="/jobinfo">
-            <Jobpager/>
+            <Header/>
           </Route>
           <Route exact path="/job">
-            <Pagebuilder/>
+            <Header/>
           </Route>
         </Switch>
       </React.Fragment>

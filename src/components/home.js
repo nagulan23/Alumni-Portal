@@ -14,6 +14,7 @@ import c10 from '../assets/providence.svg';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import './home.css';
+import { withRouter } from "react-router-dom";
 
 class Home extends Component {
     state = { 
@@ -30,7 +31,9 @@ class Home extends Component {
                     </div>
                 </div>
                 <div style={{padiing:"10px",textAlign:"center",boxShadow:"0 0 10px #E44652",marginTop:"-2px",fontSize:"13px",fontWeight:"500"}}>
-                    NIRF rank 4 &nbsp;&nbsp;•&nbsp;&nbsp; 200+ Courses &nbsp;&nbsp;•&nbsp;&nbsp; 6 Campuses &nbsp;&nbsp;•&nbsp;&nbsp; Cutting edge B.Tech programmes &nbsp;&nbsp;•&nbsp;&nbsp; Highest L.P.A 66CTC
+                    <marquee direction="right">
+                        NIRF rank 4 &nbsp;&nbsp;•&nbsp;&nbsp; 200+ Courses &nbsp;&nbsp;•&nbsp;&nbsp; 6 Campuses &nbsp;&nbsp;•&nbsp;&nbsp; Cutting edge B.Tech programmes &nbsp;&nbsp;•&nbsp;&nbsp; Highest L.P.A 66CTC
+                    </marquee>
                 </div>
                 <div style={{backgroundColor:"white",display:"flex",flexDirection:"column",margin:"50px",boxShadow:"0 0 10px gray",borderRadius:"10px",alignItems:"center",padding:"15px",paddingRight:"70px",paddingLeft:"70px"}}>
                     <div style={{fontSize:"20px",fontWeight:"700",color:"#282726",marginBottom:"20px"}}>
@@ -50,7 +53,9 @@ class Home extends Component {
                         <img src={c9} alt="" style={{objectFit:"contain",width:"10%"}}/>
                         <img src={c10} alt="" style={{objectFit:"contain",width:"10%"}}/>
                     </div>
-                    <button style={{width:"300px",border:"0",backgroundColor:"#E4DFCF",color:"#E44652",fontSize:"20px",fontWeight:"600",padding:"7px",borderRadius:"10px",marginTop:"20px",cursor:"pointer"}}>View Openings</button>
+                    <button onClick={()=>this.props.history.push("/job")} style={{width:"300px",border:"0",backgroundColor:"#E4DFCF",color:"#E44652",fontSize:"20px",fontWeight:"600",padding:"7px",borderRadius:"10px",marginTop:"20px",cursor:"pointer"}}>
+                        View Openings
+                    </button>
                 </div>
                 <div style={{display:"flex",flexDirection:"column",margin:"50px"}}>
                     <div style={{display:"flex",flexDirection:"row",alignItems:"flex-end"}}>
@@ -80,7 +85,7 @@ class Home extends Component {
     }
 }
  
-export default Home;
+export default withRouter(Home);
 
 class UpEvents extends Component {
     state = { 
