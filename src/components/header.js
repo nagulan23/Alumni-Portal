@@ -9,6 +9,8 @@ import { IconButton } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import DonatePage from './donate';
 import ProfilePage from './profile';
+import Jobpager from '../job/jobpager';
+import Pagebuilder from '../job/pagebuilder'
 import { withRouter } from "react-router-dom";
 
 class Header extends Component {
@@ -25,6 +27,10 @@ class Header extends Component {
             this.setState({page:pgno});
             this.props.history.push("/home");
         }
+         if(pgno===2){
+            this.setState({page:pgno});
+            this.props.history.push("/job");
+        }
         if(pgno===0){
             this.setState({page:1});
             this.props.history.push("/profile");
@@ -33,7 +39,7 @@ class Header extends Component {
 
     render() { 
         return ( 
-            <div style={{backgroundColor:"#FAF8F0",width:"100%",position:"absolute",display:"flex",flexDirection:"column"}}>
+            <div style={{backgroundColor:"#FAF8F0",width:"100%",position:"absolute",display:"flex",flexDirection:"column",overflow:"auto"}}>
                 <div className="header-style" style={{fontWeight:"500",width:"calc( 100% - 40px )",color:"#FAF8F0",padding:"10px",paddingLeft:"20px",paddingRight:"20px",boxShadow:"0 0 10px black",zIndex:1,display:"flex",alignItems:"Center",justifyContent:"space-between"}}>
                     <div  style={{display:"flex",alignItems:"center"}}>
                         <div style={{fontFamily:"'Dancing Script', cursive",fontSize:"25px",color:"#E44652 "}}>

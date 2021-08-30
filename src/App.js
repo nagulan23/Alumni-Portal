@@ -6,7 +6,8 @@ import Header from './components/header';
 import Loading from './components/loading';
 import ProfilePage from './components/profile';
 import { withRouter } from "react-router-dom";
-
+import Jobpager from "./job/jobpager"
+import Pagebuilder from "./job/pagebuilder"
 
 
 class App extends Component {
@@ -47,6 +48,12 @@ class App extends Component {
           </Route>
           <Route exact path="/profile">
             <Header />
+          </Route>
+          <Route exact path="/jobinfo">
+            <Jobpager/>
+          </Route>
+          <Route exact path="/job">
+            <Pagebuilder/>
           </Route>
         </Switch>
       </React.Fragment>

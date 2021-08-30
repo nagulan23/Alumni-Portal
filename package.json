@@ -22,6 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "format": "prettier --ignore-path .gitignore --write .",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
