@@ -11,6 +11,8 @@ import DonatePage from './donate';
 import ProfilePage from './profile';
 import Jobpager from './job/jobpager';
 import Pagebuilder from './job/pagebuilder';
+import Eventpager from './event/eventpager';
+import Eventbuilder from './event/eventbuilder';
 import BlogPage from './Blog/blog';
 import InBlogPage from './Blog/inblog';
 import { withRouter } from "react-router-dom";
@@ -21,10 +23,6 @@ class Header extends Component {
     }
 
     pageChange(pgno){
-        if(pgno===4){
-            this.setState({page:pgno});
-            this.props.history.push("/donate");
-        }
         if(pgno===1){
             this.setState({page:pgno});
             this.props.history.push("/home");
@@ -36,6 +34,14 @@ class Header extends Component {
         if(pgno===3){
            this.setState({page:pgno});
            this.props.history.push("/blog");
+       }
+       if(pgno===4){
+           this.setState({page:pgno});
+           this.props.history.push("/event");
+       }
+       if(pgno===5){
+           this.setState({page:pgno});
+           this.props.history.push("/donate");
        }
         if(pgno===0){
             this.setState({page:1});
@@ -71,6 +77,11 @@ class Header extends Component {
                         </div>
                         <div className={this.state.page===4? "header-pressed-button-style":"header-button-style "} style={{cursor:"pointer", borderRadius: "10px",padding:"8px",marginLeft:"20px",paddingLeft:"15px",paddingRight:"15px"}}
                             onClick={this.pageChange.bind(this,4)}
+                        >
+                            Events
+                        </div>
+                        <div className={this.state.page===5? "header-pressed-button-style":"header-button-style "} style={{cursor:"pointer", borderRadius: "10px",padding:"8px",marginLeft:"20px",paddingLeft:"15px",paddingRight:"15px"}}
+                            onClick={this.pageChange.bind(this,5)}
                         >
                             Donate
                         </div>
@@ -114,6 +125,12 @@ class Header extends Component {
                     </Route>
                     <Route exact path="/blog">
                         <BlogPage/>
+                    </Route>
+                    <Route exact path="/eventinfo">
+                        <Eventpager/>
+                    </Route>
+                    <Route exact path="/event">
+                        <Eventbuilder/>
                     </Route>
                 </Switch>
                 <div style={{backgroundColor:"#282726",width:"calc( 100% - 70px )",padding:"20px",paddingLeft:"20px",paddingRight:"50px",boxShadow:"0 0 10px black",display:"flex",flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>

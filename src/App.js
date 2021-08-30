@@ -58,6 +58,12 @@ class App extends Component {
           <Route exact path="/blog">
             <Header/>
           </Route>
+          <Route exact path="/eventinfo">
+            <Header/>
+          </Route>
+          <Route exact path="/event">
+            <Header/>
+          </Route>
         </Switch>
       </React.Fragment>
      );

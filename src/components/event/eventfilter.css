@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Rosario:wght@300&display=swap");
+.Sidebar {
+  position: fixed;
+  width: 16vw;
+  height: 30vw;
+  left: 25px;
+  top: 70px;
+  background: #415a80;
+  border: 1px solid #e7e6e4;
+  border-radius: 11px;
+}
+
+.Text {
+  position: relative;
+  color: white;
+  padding-top: 1vh;
+  padding-left: 1.2vw;
+  font-family: Rosario;
+  letter-spacing: 1.5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.Text1 {
+  position: relative;
+  color: white;
+  padding-top: 1vh;
+  padding-left: 1.2vw;
+  font-family: Rosario;
+  letter-spacing: 1.5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.line1 {
+  position: absolute;
+  left: 5.86%;
+  right: 11.76%;
+  top: 10.2%;
+  bottom: 91.5%;
+  border: 1px solid #f2f2ee;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
