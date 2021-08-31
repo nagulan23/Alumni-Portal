@@ -11,6 +11,7 @@ import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import Typography from '@material-ui/core/Typography';
+import { withRouter } from "react-router-dom";
 
 class ProfilePage extends Component {
     state = { 
@@ -33,6 +34,8 @@ class ProfilePage extends Component {
     }
 
     changeTab(tab){
+        if(tab==="out")
+            this.props.history.push("/signin");
         this.setState({ tab:tab});
     }
 
@@ -109,7 +112,7 @@ class ProfilePage extends Component {
     }
 }
  
-export default ProfilePage;
+export default withRouter(ProfilePage);
 
 
 class About extends Component {
