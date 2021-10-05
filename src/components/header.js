@@ -44,15 +44,15 @@ class Header extends Component {
            this.props.history.push("/donate");
        }
         if(pgno===0){
-            this.setState({page:1});
+            this.setState({page:pgno});
             this.props.history.push("/profile");
         }
     }
 
     render() { 
         return ( 
-            <div style={{backgroundColor:"#FAF8F0",width:"100%",position:"absolute",display:"flex",flexDirection:"column",overflow:"auto"}}>
-                <div className="header-style" style={{fontWeight:"500",width:"calc( 100% - 40px )",color:"#FAF8F0",padding:"10px",paddingLeft:"20px",paddingRight:"20px",boxShadow:"0 0 10px black",zIndex:1,display:"flex",alignItems:"Center",justifyContent:"space-between"}}>
+            <div style={{paddingTop:"70px",backgroundColor:"#FAF8F0",width:"100%",display:"flex",flexDirection:"column",overflow:"auto"}}>
+                <div className="header-style" style={{position:"fixed",top:"0px",fontWeight:"500",width:"calc( 100% - 40px )",color:"#FAF8F0",padding:"10px",paddingLeft:"20px",paddingRight:"20px",boxShadow:"0 0 10px black",zIndex:1,display:"flex",alignItems:"Center",justifyContent:"space-between"}}>
                     <div  style={{display:"flex",alignItems:"center"}}>
                         <div style={{fontFamily:"'Dancing Script', cursive",fontSize:"25px",color:"#E44652 "}}>
                             Alumni

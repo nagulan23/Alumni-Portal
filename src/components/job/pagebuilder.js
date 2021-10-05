@@ -14,16 +14,16 @@ function Pagebuilder() {
             overflow: "auto",
           }}
         >
-          <div style={{ position: "fixed" }}>
+          <div style={{display:"flex",width:"400px",backgroundColor:"#415a80",alignItems:"stretch"}}>
             <Jobfilter></Jobfilter>
           </div>
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              paddingLeft: "25%",
+              paddingLeft: "5%",
               paddingTop: "5%",
-              paddingRight: "10%",
+              paddingRight: "5%",
             }}
           >
             <Jobcard />
@@ -35,10 +35,10 @@ function Pagebuilder() {
             <Jobcard />
             <div style={{ height: "20px", width: "100%" }}></div>
             <Jobcard />
+            <div style={{ height: "50px", width: "100%" }}></div>
           </div>
         </div>
-        <div style={{ height: "50px", width: "100%" }}></div>
-        </div>
+      </div>
     )
 }
 

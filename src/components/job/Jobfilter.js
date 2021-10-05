@@ -1,4 +1,4 @@
-import React, { Component, Button } from "react"
+import React, { Component, Button ,useState,useEffect } from "react"
 import PropTypes from "prop-types"
 import { withStyles } from "@material-ui/core/styles"
 import "./Jobfilter.css"
@@ -42,30 +42,28 @@ const Experience = [
 const Role = [{ job: "Software Engineer" }, { job: "System Engineer" }]
 function Jobfilter() {
   const classes = useStyles()
-  {
+
     return (
-      <div className="Sidebar">
+      <div className="jSidebar">
         <div className="Text">Filter</div>
-        <br />
-        <div className="line1"></div>
+        <div className="jline1"></div>
         <div className="Text1">Location</div>
         <Autocomplete
           id="combo-box-demo"
           options={Location}
           getOptionLabel={option => option.location}
           style={{
-            width: 200,
             paddingLeft: "10px",
             paddingTop: "10px",
             paddingBottom: "40px",
-            height: 15,
+            height: "15px",
             Color: "#E7E6E4",
             borderRadius: "10px",
           }}
           renderInput={params => (
             <TextField
               {...params}
-              style={{ background: "#E7E6E4", borderRadius: "10px" }}
+              style={{ background: "white", borderRadius: "10px" }}
               label=""
               variant="outlined"
               Color="#E7E6E4"
@@ -78,7 +76,6 @@ function Jobfilter() {
           options={Experience}
           getOptionLabel={option => option.exp}
           style={{
-            width: 200,
             paddingLeft: "10px",
             paddingBottom: "40px",
             paddingTop: "10px",
@@ -88,7 +85,7 @@ function Jobfilter() {
           renderInput={params => (
             <TextField
               {...params}
-              style={{ background: "#E7E6E4", borderRadius: "10px" }}
+              style={{ background: "white", borderRadius: "10px" }}
               label=""
               variant="outlined"
               Color="#E7E6E4"
@@ -101,7 +98,6 @@ function Jobfilter() {
           options={Role}
           getOptionLabel={option => option.job}
           style={{
-            width: 200,
             paddingLeft: "10px",
             paddingBottom: "40px",
             paddingTop: "10px",
@@ -111,14 +107,14 @@ function Jobfilter() {
           renderInput={params => (
             <TextField
               {...params}
-              style={{ background: "#E7E6E4", borderRadius: "10px" }}
+              style={{ background: "white", borderRadius: "10px" }}
               label=""
               variant="outlined"
               Color="#E7E6E4"
             />
           )}
         />
-        <div className="Text1">Salary</div>
+        <div className="Text1">Min Salary</div>
         <div className={classes.root}>
           <Slider
             defaultValue={30}
@@ -137,7 +133,6 @@ function Jobfilter() {
           />
         </div>
       </div>
-    )
-  }
+    );
 }
 export default Jobfilter

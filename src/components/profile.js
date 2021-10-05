@@ -12,6 +12,10 @@ import TimelineDot from '@material-ui/lab/TimelineDot';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from "react-router-dom";
+import MyJob from './myJobs';
+import AddJob from './addJob';
+import MyEvents from './myEvents';
+import AddEvent from './addEvents';
 
 class ProfilePage extends Component {
     state = { 
@@ -19,13 +23,13 @@ class ProfilePage extends Component {
     }
 
     hoverTabChange(tab){
-        if(tab!==this.state.tab){
+        if(!this.state.tab.includes(tab)){
             document.getElementById(tab+"2").style.backgroundColor = "#ff4f5c ";
         }
     }
 
     exitTabChange(tab){
-        if(tab!==this.state.tab){
+        if(!this.state.tab.includes(tab)){
             document.getElementById(tab+"1").style.backgroundColor = "#E44652 ";
             document.getElementById(tab+"2").style.backgroundColor = "#E44652 ";
             document.getElementById(tab+"2").style.color = "#FAF8F0 ";
@@ -41,8 +45,8 @@ class ProfilePage extends Component {
 
     render() { 
         return ( 
-            <div style={{position:"relative",width:"100%"}}>
-                <div style={{position:"absolute",width:"10%",backgroundColor:"#E44652",borderBottomRightRadius:"20px",boxShadow:"-20px 5px 20px gray"}}>
+            <div style={{width:"100%",display:"flex",flexDirection:"row"}}>
+                <div style={{position:"fixed",width:"10%",minWidth:"150px",backgroundColor:"#E44652",borderBottomRightRadius:"20px",boxShadow:"-20px 5px 20px gray"}}>
                     <div style={{boxShadow:"-2px -2px 5px black",marginLeft:"10px",marginTop:"10px",width:"100%",backgroundImage:`url("https://img2.thejournal.ie/inline/2470754/original/?width=428&version=2470754")`,backgroundSize:"cover",backgroundPosition:"center",aspectRatio:"1/1"}}>
                     </div>
                     <div style={{color:"#FAF8F0",textAlign:"right",paddingBottom:"40px",paddingTop:"40px"}}>
@@ -57,25 +61,25 @@ class ProfilePage extends Component {
                             <div style={{height:"10px",borderTopRightRadius:"10px",backgroundColor:"#E44652"}}>
                             </div>
                         </div>
-                        <div id="events1" style={{backgroundColor:this.state.tab==="events"? "#FAF8F0":"#E44652"}}>
+                        <div id="events1" style={{backgroundColor:this.state.tab==="events" || this.state.tab==="addevents"? "#FAF8F0":"#E44652"}}>
                             <div style={{height:"10px",borderBottomRightRadius:"10px",backgroundColor:"#E44652"}}>
                             </div>
                         </div>
-                        <div id="events2" onClick={this.changeTab.bind(this,"events")} onMouseEnter={this.hoverTabChange.bind(this,"events")} onMouseLeave={this.exitTabChange.bind(this,"events")}style={{cursor:"pointer",fontSize:"20px",fontWeight:"700",padding:"5px",paddingRight:"20px",marginLeft:"20px",borderBottomLeftRadius:"10px",borderTopLeftRadius:"10px",backgroundColor:this.state.tab==="events"? "#FAF8F0":"#E44652",color:this.state.tab==="events"? "#E44652":"#FAF8F0"}}>
+                        <div id="events2" onClick={this.changeTab.bind(this,"events")} onMouseEnter={this.hoverTabChange.bind(this,"events")} onMouseLeave={this.exitTabChange.bind(this,"events")}style={{cursor:"pointer",fontSize:"20px",fontWeight:"700",padding:"5px",paddingRight:"20px",marginLeft:"20px",borderBottomLeftRadius:"10px",borderTopLeftRadius:"10px",backgroundColor:this.state.tab==="events" || this.state.tab==="addevents"? "#FAF8F0":"#E44652",color:this.state.tab==="events" || this.state.tab==="addevents"? "#E44652":"#FAF8F0"}}>
                             Events
                         </div>
-                        <div id="events3" style={{backgroundColor:this.state.tab==="events"? "#FAF8F0":"#E44652"}}>
+                        <div id="events3" style={{backgroundColor:this.state.tab==="events" || this.state.tab==="addevents"? "#FAF8F0":"#E44652"}}>
                             <div style={{height:"10px",borderTopRightRadius:"10px",backgroundColor:"#E44652"}}>
                             </div>
                         </div>
-                        <div id="referrals1" style={{backgroundColor:this.state.tab==="referrals"? "#FAF8F0":"#E44652"}}>
+                        <div id="referrals1" style={{backgroundColor:this.state.tab==="referrals" || this.state.tab==="addreferrals"? "#FAF8F0":"#E44652"}}>
                             <div style={{height:"10px",borderBottomRightRadius:"10px",backgroundColor:"#E44652"}}>
                             </div>
                         </div>
-                        <div id="referrals2" onClick={this.changeTab.bind(this,"referrals")} onMouseEnter={this.hoverTabChange.bind(this,"referrals")} onMouseLeave={this.exitTabChange.bind(this,"referrals")}style={{cursor:"pointer",fontSize:"20px",fontWeight:"700",padding:"5px",paddingRight:"20px",marginLeft:"20px",borderBottomLeftRadius:"10px",borderTopLeftRadius:"10px",backgroundColor:this.state.tab==="referrals"? "#FAF8F0":"#E44652",color:this.state.tab==="referrals"? "#E44652":"#FAF8F0"}}>
+                        <div id="referrals2" onClick={this.changeTab.bind(this,"referrals")} onMouseEnter={this.hoverTabChange.bind(this,"referrals")} onMouseLeave={this.exitTabChange.bind(this,"referrals")}style={{cursor:"pointer",fontSize:"20px",fontWeight:"700",padding:"5px",paddingRight:"20px",marginLeft:"20px",borderBottomLeftRadius:"10px",borderTopLeftRadius:"10px",backgroundColor:this.state.tab==="referrals" || this.state.tab==="addreferrals"? "#FAF8F0":"#E44652",color:this.state.tab==="referrals" || this.state.tab==="addreferrals"? "#E44652":"#FAF8F0"}}>
                             Referrals
                         </div>
-                        <div id="referrals3"style={{backgroundColor:this.state.tab==="referrals"? "#FAF8F0":"#E44652"}}>
+                        <div id="referrals3"style={{backgroundColor:this.state.tab==="referrals" || this.state.tab==="addreferrals"? "#FAF8F0":"#E44652"}}>
                             <div style={{height:"10px",borderTopRightRadius:"10px",backgroundColor:"#E44652"}}>
                             </div>
                         </div>
@@ -104,9 +108,24 @@ class ProfilePage extends Component {
                         </div>
                     </div>
                 </div>
-                <div style={{margin:"50px",marginLeft:"calc( 10% + 50px )"}}>
-                        <About/>
-                    </div>
+                <div style={{width:"10%",minWidth:"150px",height:"700px"}}>
+
+                </div>
+                <div style={{margin:"50px",width:"90%",minWidth:"600px"}}>
+                    {
+                        (this.state.tab==='profile')?
+                        <About/>:
+                        (this.state.tab==='addreferrals')?
+                        <AddJob/>:
+                        (this.state.tab==='referrals')?
+                        <MyJob changeTab={this.changeTab.bind(this,"addreferrals")}/>:
+                        (this.state.tab==='addevents')?
+                        <AddEvent/>:
+                        (this.state.tab==='events')?
+                        <MyEvents changeTab={this.changeTab.bind(this,"addevents")}/>:
+                        <div/>
+                    }
+                </div>
             </div>
         );
     }
@@ -322,25 +341,27 @@ class About extends Component {
                     </div>
                 </div>
                 <div style={{width:"20%"}}>
-                    <div style={{display:"flex",alignItems:"center"}}>
-                        <img src="https://image.flaticon.com/icons/png/512/174/174857.png" alt="" width="30px" style={{paddingRight:"10px"}}/>
-                        <a href="https://www.linkedin.com/in/nagulan-s/" style={{overflowWrap:"break-word",width:"calc( 100% - 40px)",textDecoration:"none",color:"#0076b6",fontSize:"18px",fontWeight:"500"}}>nagulan-s</a>
-                    </div>
-                    <div style={{display:"flex",alignItems:"center",paddingTop:"20px"}}>
-                        <img src="https://image.flaticon.com/icons/png/512/25/25231.png" alt="" width="30px" style={{paddingRight:"10px"}}/>
-                        <a href="https://github.com/nagulan23" style={{overflowWrap:"break-word",width:"calc( 100% - 40px)",textDecoration:"none",color:"#000101",fontSize:"18px",fontWeight:"500"}}>nagulan23</a>
-                    </div>
-                    <div style={{display:"flex",alignItems:"center",paddingTop:"20px"}}>
-                        <LinkIcon style={{color:"#E44652",fontSize:"30px",paddingRight:"10px"}}/>
-                        <a href="https://nagulans.netlify.app/" style={{overflowWrap:"break-word",width:"calc( 100% - 40px)",textDecoration:"none",color:"#000101",fontSize:"15px",fontWeight:"500"}}>https://nagulans.netlify.app</a>
-                    </div>
-                    <div style={{display:"flex",alignItems:"center",paddingTop:"20px"}}>
-                        <LocationOnIcon style={{color:"#E44652",fontSize:"30px",paddingRight:"10px"}}/>
-                        <a href="https://maps.google.com/?q=49, Meenakshi nagar, 6th west cross street, Villapuram, Madurai- 625012, Tamilnadu, India." style={{overflowWrap:"break-word",width:"calc( 100% - 40px)",textDecoration:"none",color:"#000101",fontSize:"15px",fontWeight:"500"}}>49, Meenakshi nagar, 6th west cross street, Villapuram, Madurai- 625012, Tamilnadu, India.</a>
-                    </div>
-                    <div style={{display:"flex",alignItems:"center",paddingTop:"20px"}}>
-                        <EmailIcon style={{color:"#E44652",fontSize:"30px",paddingRight:"10px"}}/>
-                        <div href="" style={{overflowWrap:"break-word",width:"calc( 100% - 40px)",textDecoration:"none",color:"#000101",fontSize:"15px",fontWeight:"500"}}>nagulan1645@gmail.com</div>
+                    <div style={{position:"fixed"}}>
+                        <div style={{display:"flex",alignItems:"center"}}>
+                            <img src="https://image.flaticon.com/icons/png/512/174/174857.png" alt="" width="30px" style={{paddingRight:"10px"}}/>
+                            <a href="https://www.linkedin.com/in/nagulan-s/" style={{overflowWrap:"break-word",width:"calc( 100% - 40px)",textDecoration:"none",color:"#0076b6",fontSize:"18px",fontWeight:"500"}}>nagulan-s</a>
+                        </div>
+                        <div style={{display:"flex",alignItems:"center",paddingTop:"20px"}}>
+                            <img src="https://image.flaticon.com/icons/png/512/25/25231.png" alt="" width="30px" style={{paddingRight:"10px"}}/>
+                            <a href="https://github.com/nagulan23" style={{overflowWrap:"break-word",width:"calc( 100% - 40px)",textDecoration:"none",color:"#000101",fontSize:"18px",fontWeight:"500"}}>nagulan23</a>
+                        </div>
+                        <div style={{display:"flex",alignItems:"center",paddingTop:"20px"}}>
+                            <LinkIcon style={{color:"#E44652",fontSize:"30px",paddingRight:"10px"}}/>
+                            <a href="https://nagulans.netlify.app/" style={{overflowWrap:"break-word",width:"calc( 100% - 40px)",textDecoration:"none",color:"#000101",fontSize:"15px",fontWeight:"500"}}>https://nagulans.netlify.app</a>
+                        </div>
+                        <div style={{display:"flex",alignItems:"center",paddingTop:"20px"}}>
+                            <LocationOnIcon style={{color:"#E44652",fontSize:"30px",paddingRight:"10px"}}/>
+                            <a href="https://maps.google.com/?q=49, Meenakshi nagar, 6th west cross street, Villapuram, Madurai- 625012, Tamilnadu, India." style={{overflowWrap:"break-word",width:"calc( 100% - 40px)",textDecoration:"none",color:"#000101",fontSize:"15px",fontWeight:"500"}}>49, Meenakshi nagar, 6th west cross street, Villapuram, Madurai- 625012, Tamilnadu, India.</a>
+                        </div>
+                        <div style={{display:"flex",alignItems:"center",paddingTop:"20px"}}>
+                            <EmailIcon style={{color:"#E44652",fontSize:"30px",paddingRight:"10px"}}/>
+                            <div href="" style={{overflowWrap:"break-word",width:"calc( 100% - 40px)",textDecoration:"none",color:"#000101",fontSize:"15px",fontWeight:"500"}}>nagulan1645@gmail.com</div>
+                        </div>
                     </div>
                 </div>
             </div>
