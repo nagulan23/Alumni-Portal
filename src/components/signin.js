@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import {
+  LinkedInLoginButton
+} from 'react-social-login-buttons';
+import axios from 'axios';
 
 class SignPage extends Component {
+
     state = {  }
 
     constructor(props){
@@ -12,33 +17,32 @@ class SignPage extends Component {
         const state = queryParams.get('state');
         console.log(code); // 55 test null
         if(code!=null){
-            const requestOptions = {
-                method: 'POST',
-                body: {
+            const body = JSON.stringify({ 
+                grant_type: 'authorization_code',
+                code: code,
+                state: state,
+                client_id: '86clfmr173e6w2',
+                client_secret: 'esFirEKzXoCAvE7q',
+                redirect_uri: 'http://localhost:3000/signin'
+            });
+            axios({
+                method:'post',
+                url:'https://www.linkedin.com/oauth/v2/accessToken',
+                data: JSON.stringify({ 
                     grant_type: 'authorization_code',
                     code: code,
                     state: state,
                     client_id: '86clfmr173e6w2',
                     client_secret: 'esFirEKzXoCAvE7q',
                     redirect_uri: 'http://localhost:3000/signin'
+                }),
+                headers: {
+                    'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
                 }
-            };
-            console.log(requestOptions);
-            fetch('https://www.linkedin.com/oauth/v2/accessToken',requestOptions)
-            .catch(err => console.log(err.message))
-            .then(response => response.json())
-            .then(data =>{
-                /*fetch('https://api.linkedin.com/v2/me', {
-                    method: 'GET',
-                    headers: { 'Authorization': 'Bearer '+data },
-                    }
-                )
-                .then(response => response.json())
-                .then(profile =>{
-                    console.log(profile);
-                });*/
-                console.log(data);
-            });
+            })
+            //axios.post('https://www.linkedin.com/oauth/v2/accessToken', body, { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' })
+                .then(response => console.log(response))
+                .catch(err=>console.log(err));
         }
         console.log('..');
         /*fetch("https://api.linkedin.com/v2/me")
@@ -46,9 +50,9 @@ class SignPage extends Component {
         .then((data) => console.log(data));*/
     }
 
-    requestProfile (e) {
+    requestProfile () {
         var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86clfmr173e6w2&scope=r_liteprofile&state=foobar&redirect_uri=http://localhost:3000/signin`
-        e.preventDefault();
+
         window.location.href=oauthUrl;
         
         /*var width = 450,
@@ -86,11 +90,8 @@ class SignPage extends Component {
                         <div style={{fontFamily:"'Josefin Sans', sans-serif",fontSize:"30px",fontWeight:"700",marginBottom:"20px"}}>
                             Log in to your account
                         </div>
-                        <div className="profile-add-button" onClick={this.requestProfile.bind(this)} style={{cursor:"pointer",width:"80%",borderRadius:"5px",alignItems:"center",backgroundColor:"#0072B1",color:"white",padding:"10px",fontSize:"20px",fontWeight:"500",display:"flex"}}>
-                            <LinkedInIcon style={{fontSize:"30px"}}/>
-                            <div style={{height:"100%",width:"1px",backgroundColor:"white",marginLeft:"10px",marginRight:"10px"}}></div>
-                            <div>LinkedIn</div>
-                        </div>
+                        <LinkedInLoginButton onClick={this.requestProfile.bind(this)}/>
+                        
                     </div>
                 </div>
                 <div style={{height:"100%",width:"70%",display:"flex",flexDirection:"column",justifyContent:"space-between",alignItems:"center",backgroundImage:`url("https://www.insidescience.org/sites/default/files/2021-05/Faces.jpg")`,backgroundSize:"cover",aspectRatio:"1/1"}}>
