@@ -51,7 +51,7 @@ class SignPage extends Component {
     }
 
     requestProfile () {
-        var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86clfmr173e6w2&scope=r_liteprofile&state=foobar&redirect_uri=https://alumniportal.netlify.app/signin`
+        var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86clfmr173e6w2&scope=r_liteprofile&state=foobar&redirect_uri=https://alumniportal.netlify.app/`
 
         window.location.href=oauthUrl;
         
