@@ -34,7 +34,7 @@ class SignPage extends Component {
                     state: state,
                     client_id: '86clfmr173e6w2',
                     client_secret: 'esFirEKzXoCAvE7q',
-                    redirect_uri: 'http://localhost:3000/signin'
+                    redirect_uri: 'https://alumniportal.netlify.app/signin'
                 }),
                 headers: {
                     'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
