@@ -9,12 +9,14 @@ class AddJob extends React.Component {
 
     state={
         company_name:"",
+        logo:"",
         your_role:"",
         job_title:"",
         job_location:"",
         salary:"",
         job_description:"",
-        requirements:""
+        requirements:"",
+        reg_link:"",
     }
 
     handleChange(inputi,event) {
@@ -22,23 +24,45 @@ class AddJob extends React.Component {
             this.setState({ company_name: event.target.value });
         }
         else if(inputi===2){
-            this.setState({ your_role: event.target.value });
+            this.setState({ logo: event.target.value });
         }
         else if(inputi===3){
-            this.setState({ job_title: event.target.value });
+            this.setState({ your_role: event.target.value });
         }
         else if(inputi===4){
-            this.setState({ job_location: event.target.value });
+            this.setState({ job_title: event.target.value });
         }
         else if(inputi===5){
-            this.setState({ salary: event.target.value });
+            this.setState({ job_location: event.target.value });
         }
         else if(inputi===6){
+            this.setState({ salary: event.target.value });
+        }
+        else if(inputi===7){
             this.setState({ job_description: event.target.value });
+        }
+        else if(inputi===9){
+            this.setState({ reg_link: event.target.value });
         }
         else{
             this.setState({ requirements: event.target.value });
         }
+    }
+
+
+    urlValidator(url){
+        console.log("123456789")
+        console.log(url)
+        var result=true;
+        try {
+            var temp = new URL(url);
+          } catch (_) {
+            result=false; 
+          }
+        if(result)
+          return(<CheckCircleIcon style={{color:"green"}}/>);
+        else
+          return(<CancelIcon style={{color:"red"}} visible="true"/>);
     }
 
     render() { 
@@ -63,18 +87,23 @@ class AddJob extends React.Component {
                             <form>
                                 <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px"}}>Company name<span style={{color:"red"}}>*</span></div>
                                 <input required value={this.state.company_name} onChange={this.handleChange.bind(this,1)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
+                                <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Company Logo link<span style={{color:"red"}}>*</span></div>
+                                <input required value={this.state.logo} onChange={this.handleChange.bind(this,2)} className="profile-input-bar" type="url" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
                                 <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Your role in the hiring process<span style={{color:"red"}}>*</span></div>
-                                <input required value={this.state.your_role} onChange={this.handleChange.bind(this,2)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
+                                <input required value={this.state.your_role} onChange={this.handleChange.bind(this,3)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
                                 <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Job title<span style={{color:"red"}}>*</span></div>
-                                <input required value={this.state.job_title} onChange={this.handleChange.bind(this,3)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
+                                <input required value={this.state.job_title} onChange={this.handleChange.bind(this,4)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
                                 <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Job location<span style={{color:"red"}}>*</span></div>
-                                <input required value={this.state.job_location} onChange={this.handleChange.bind(this,4)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
+                                <input required value={this.state.job_location} onChange={this.handleChange.bind(this,5)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
                                 <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Salary</div>
-                                <input value={this.state.salary} onChange={this.handleChange.bind(this,5)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
-                                <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Job Description<span style={{color:"red"}}>*</span></div>
-                                <textarea required value={this.state.job_description} onChange={this.handleChange.bind(this,6)} className="profile-input-bar" style={{border:"2px solid black",minHeight:"150px",resize:"vertical",width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></textarea>
-                                <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Requirements<span style={{color:"red"}}>*</span></div>
-                                <textarea required value={this.state.requirements} onChange={this.handleChange.bind(this,7)} className="profile-input-bar" style={{border:"2px solid black",minHeight:"150px",resize:"vertical",width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></textarea>
+                                <input value={this.state.salary} onChange={this.handleChange.bind(this,6)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
+                                <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Job Description<span style={{color:"red"}}>* </span> (Min Length: 30 chars)</div>
+                                <textarea required value={this.state.job_description} onChange={this.handleChange.bind(this,7)} className="profile-input-bar" style={{border:"2px solid black",minHeight:"150px",resize:"vertical",width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></textarea>
+                                <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Requirements<span style={{color:"red"}}>* </span> (Min Length: 30 chars)</div>
+                                <textarea required value={this.state.requirements} onChange={this.handleChange.bind(this,8)} className="profile-input-bar" style={{border:"2px solid black",minHeight:"150px",resize:"vertical",width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></textarea>
+                                <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Application Link<span style={{color:"red"}}>*</span></div>
+                                <input required value={this.state.reg_link} onChange={this.handleChange.bind(this,9)} className="profile-input-bar" type="url" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
+                                
                             </form>
                         </div>
                     </div>
@@ -88,6 +117,12 @@ class AddJob extends React.Component {
                                 <CheckCircleIcon style={{color:"green"}}/>
                             }
                             <div style={{fontWeight:"500"}}>Company name</div>
+                        </div>
+                        <div style={{display:"flex"}}>
+                            {
+                                this.urlValidator(this.state.logo)
+                            }
+                            <div style={{fontWeight:"500"}}>Company logo</div>
                         </div>
                         <div style={{display:"flex"}}>
                             {
@@ -119,7 +154,7 @@ class AddJob extends React.Component {
                         </div>
                         <div style={{display:"flex"}}>
                             {
-                                (this.state.job_description==="")?
+                                (this.state.job_description.length<30)?
                                 <CancelIcon style={{color:"red"}} visible="true"/>:
                                 <CheckCircleIcon style={{color:"green"}}/>
                             }
@@ -127,11 +162,17 @@ class AddJob extends React.Component {
                         </div>
                         <div style={{display:"flex"}}>
                             {
-                                (this.state.requirements==="")?
+                                (this.state.requirements.length<30)?
                                 <CancelIcon style={{color:"red"}} visible="true"/>:
                                 <CheckCircleIcon style={{color:"green"}}/>
                             }
                             <div style={{fontWeight:"500"}}>Requirements</div>
+                        </div>
+                        <div style={{display:"flex"}}>
+                        {
+                                this.urlValidator(this.state.reg_link)
+                            }
+                            <div style={{fontWeight:"500"}}>Application link</div>
                         </div>
                         <div style={{height:"10px"}}/>
                         <div className="profile-add-button" style={{boxShadow:"0 0 10px gray",cursor:"pointer",alignItems:"center",backgroundColor:"#065285",padding:"10px",borderRadius:"10px",display:"flex",width:"calc(100% - 20px)",color:"white"}}>

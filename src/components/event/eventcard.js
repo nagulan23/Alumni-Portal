@@ -2,7 +2,6 @@ import WorkOutlineOutlinedIcon from "@material-ui/icons/WorkOutlineOutlined"
 import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined"
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney"
 import DescriptionOutlinedIcon from "@material-ui/icons/DescriptionOutlined"
-import "./eventcard.css"
 import img from "../../assets/life.jpeg"
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';

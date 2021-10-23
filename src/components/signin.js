@@ -5,10 +5,14 @@ import {
   LinkedInLoginButton
 } from 'react-social-login-buttons';
 import axios from 'axios';
+import FactCheckIcon from '@mui/icons-material/FactCheck';
+import LoginIcon from '@mui/icons-material/Login';
 
 class SignPage extends Component {
 
-    state = {  }
+    state = { 
+        page: 1,
+    }
 
     constructor(props){
         super(props);
@@ -25,22 +29,12 @@ class SignPage extends Component {
                 client_secret: 'esFirEKzXoCAvE7q',
                 redirect_uri: 'http://localhost:3000/signin'
             });
-            axios({
-                method:'post',
-                url:'https://www.linkedin.com/oauth/v2/accessToken',
-                data: JSON.stringify({ 
-                    grant_type: 'authorization_code',
-                    code: code,
-                    state: state,
-                    client_id: '86clfmr173e6w2',
-                    client_secret: 'esFirEKzXoCAvE7q',
-                    redirect_uri: 'https://alumniportal.netlify.app/signin'
-                }),
+            const header = {
                 headers: {
-                    'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+                  'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            })
-            //axios.post('https://www.linkedin.com/oauth/v2/accessToken', body, { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' })
+            };
+            axios.post('https://www.linkedin.com/oauth/v2/accessToken', body, header)
                 .then(response => console.log(response))
                 .catch(err=>console.log(err));
         }
@@ -51,7 +45,7 @@ class SignPage extends Component {
     }
 
     requestProfile () {
-        var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86clfmr173e6w2&scope=r_liteprofile&state=foobar&redirect_uri=https://alumniportal.netlify.app/`
+        var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86clfmr173e6w2&scope=r_liteprofile&state=foobar&redirect_uri=http://localhost:3000/signin`
 
         window.location.href=oauthUrl;
         
@@ -74,6 +68,10 @@ class SignPage extends Component {
         );*/
       };
 
+    checkingRollNumber(){
+        this.setState({page:3});
+    }
+
     render() { 
         return ( 
             <div style={{height:"100%",width:"100%",position:"absolute",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
@@ -87,11 +85,38 @@ class SignPage extends Component {
                         </div>
                     </div>
                     <div style={{display:"flex",flexDirection:"column",marginTop:"100px"}}>
-                        <div style={{fontFamily:"'Josefin Sans', sans-serif",fontSize:"30px",fontWeight:"700",marginBottom:"20px"}}>
-                            Log in to your account
+                        {
+                            (this.state.page===1)?
+                            <div>
+                                <div style={{fontFamily:"'Josefin Sans', sans-serif",fontSize:"30px",fontWeight:"700",marginBottom:"20px"}}>
+                                    Log in to your account
+                                </div>
+                                <LinkedInLoginButton onClick={()=>this.setState({page:2})}/>
+                            </div>:
+                            <div>
+                            <div style={{fontFamily:"'Josefin Sans', sans-serif",fontSize:"30px",fontWeight:"700",marginBottom:"20px"}}>
+                                Finishing Sign up
+                            </div>
+                            <div style={{display:"flex",height:"42px"}}>
+                                <input placeholder="Your Amrita Roll Number" style={{paddingLeft:"10px",paddingRight:"10px",fontSize:"20px",width:"100%",border:"3px solid #043353",borderRadius:"8px",fontWeight:"700",color:"#E44652"}}/>
+                            </div>
+                            {
+                                (this.state.page===2)?
+                                <div className="profile-add-button" onClick={this.checkingRollNumber.bind(this)} style={{marginTop:"20px",boxShadow:"0 0 10px gray",cursor:"pointer",alignItems:"center",backgroundColor:"#065285",padding:"10px",borderRadius:"5px",display:"inline-flex",color:"white"}}>
+                                    <div style={{fontWeight:"500",paddingRight:"10px"}}>
+                                        Check Roll Number
+                                    </div>
+                                    <FactCheckIcon  style={{fontSize:"25px"}}/>
+                                </div>:
+                                <div className="profile-add-button" style={{marginTop:"20px",boxShadow:"0 0 10px gray",cursor:"pointer",alignItems:"center",backgroundColor:"#065285",padding:"10px",borderRadius:"5px",display:"inline-flex",color:"white"}}>
+                                    <div style={{fontWeight:"500",paddingRight:"10px"}}>
+                                        Lets Connect
+                                    </div>
+                                    <LoginIcon  style={{fontSize:"25px"}}/>
+                                </div>
+                            }          
                         </div>
-                        <LinkedInLoginButton onClick={this.requestProfile.bind(this)}/>
-                        
+                        }
                     </div>
                 </div>
                 <div style={{height:"100%",width:"70%",display:"flex",flexDirection:"column",justifyContent:"space-between",alignItems:"center",backgroundImage:`url("https://www.insidescience.org/sites/default/files/2021-05/Faces.jpg")`,backgroundSize:"cover",aspectRatio:"1/1"}}>

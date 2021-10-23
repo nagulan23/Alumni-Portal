@@ -11,7 +11,7 @@ class Jobcard extends Component {
   state = {  }
   render() { 
     return ( 
-      <div className="jBox" onClick={()=>this.props.history.push("/jobinfo")} style={{cursor:"pointer"}}>
+      <div className="Box" onClick={()=>this.props.history.push("/jobinfo")} style={{cursor:"pointer"}}>
         <div style={{ display: "flex" }}>
           <div style={{ flex: "60%" }}>
             <div className="Title">Software Development</div>
