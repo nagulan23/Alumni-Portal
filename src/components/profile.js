@@ -16,6 +16,8 @@ import MyJob from './myJobs';
 import AddJob from './addJob';
 import MyEvents from './myEvents';
 import AddEvent from './addEvents';
+import MyBlogs from './myBlogs';
+import AddBlog from './addBlog';
 
 class ProfilePage extends Component {
     state = { 
@@ -117,6 +119,10 @@ class ProfilePage extends Component {
                         <About/>:
                         (this.state.tab==='addreferrals')?
                         <AddJob/>:
+                        (this.state.tab==='addblog')?
+                        <AddBlog/>:
+                        (this.state.tab==='blogs')?
+                        <MyBlogs changeTab={this.changeTab.bind(this,"addblog")}/>:
                         (this.state.tab==='referrals')?
                         <MyJob changeTab={this.changeTab.bind(this,"addreferrals")}/>:
                         (this.state.tab==='addevents')?
