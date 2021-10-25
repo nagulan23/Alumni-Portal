@@ -81,7 +81,7 @@ class AddEvent extends React.Component {
                                 Alumni
                             </div>
                             <div style={{fontSize:"30px",fontWeight:"700",color:"#043353"}}>CONNECT for Hosters</div>
-                            <img src="https://cdni.iconscout.com/illustration/premium/thumb/business-employee-3462299-2895981.png" alt="" height="180px"/>
+                            <img src="https://image.freepik.com/free-vector/happy-tiny-business-people-dancing-having-fun-drinking-wine-corporate-party-team-building-activity-corporate-event-idea-concept-pinkish-coral-bluevector-isolated-illustration_335657-1414.jpg" alt="" height="180px"/>
                         </div>
                         <div style={{backgroundColor:"white",width:"calc( 100% - 80px)",borderRadius:"10px",padding:"40px",marginTop:"40px",boxShadow:"0 0 10px gray",display:"flex",flexDirection:"column"}}>
                             <div style={{fontSize:"23px",fontWeight:"700",color:"#043353",marginBottom:"20px"}}>Let's get started...</div>
