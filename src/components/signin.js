@@ -20,22 +20,32 @@ class SignPage extends Component {
         const code = queryParams.get('code');
         const state = queryParams.get('state');
         console.log(code); // 55 test null
+        console.log(state);
         if(code!=null){
-            const body = JSON.stringify({ 
+            const body = { 
                 grant_type: 'authorization_code',
                 code: code,
-                state: state,
                 client_id: '86clfmr173e6w2',
                 client_secret: 'esFirEKzXoCAvE7q',
                 redirect_uri: 'http://localhost:3000/signin'
-            });
+            };
             const header = {
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }
             };
-            axios.post('https://www.linkedin.com/oauth/v2/accessToken', body, header)
-                .then(response => console.log(response))
+            axios.post('https://www.linkedin.com/oauth/v2/accessToken', new URLSearchParams(body), header)
+                .then(response => {
+                    console.log(response);
+                    console.log('Bearer '+response.data.access_token);
+                    axios.get('https://api.linkedin.com/v2/me',{
+                        headers: {
+                          'Authorization': 'Bearer '+response.data.access_token
+                        }
+                    })
+                    .then(response =>console.log(response))
+                    .catch(err=>console.log(err));
+                })
                 .catch(err=>console.log(err));
         }
         console.log('..');
@@ -91,7 +101,7 @@ class SignPage extends Component {
                                 <div style={{fontFamily:"'Josefin Sans', sans-serif",fontSize:"30px",fontWeight:"700",marginBottom:"20px"}}>
                                     Log in to your account
                                 </div>
-                                <LinkedInLoginButton onClick={()=>this.setState({page:2})}/>
+                                <LinkedInLoginButton onClick={this.requestProfile.bind(this)}/>
                             </div>:
                             <div>
                             <div style={{fontFamily:"'Josefin Sans', sans-serif",fontSize:"30px",fontWeight:"700",marginBottom:"20px"}}>
