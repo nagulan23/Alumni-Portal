@@ -167,7 +167,7 @@ class Highlight extends Component {
                 <div style={{height:"420px",position:"relative",display:"flex",alignItems:"center"}}>
                     <div style={{width:"100%",position:"absolute",display:"flex",justifyContent:"space-between"}}>
                         <div style={{paddingLeft:"50px"}}>
-                            <img src="https://www.amrita.edu/sites/default/files/cutting-life-amrita.png" alt="" style={{objectFit:"contain",height:"400px",width:"100%",boxShadow:"0 0 10px black",borderRadius:"200px"}}/>
+                            <img src="https://amrita.edu/wp-content/uploads/2019/11/Banner_dept_biotechnology_msc1-1.jpg" alt="" style={{objectFit:"cover",height:"400px",width:"400px",boxShadow:"0 0 10px black",borderRadius:"200px"}}/>
                         </div>
                         <div></div>
                     </div>
@@ -183,7 +183,7 @@ class Highlight extends Component {
                 <div style={{height:"420px",position:"relative",display:"flex",alignItems:"center"}}>
                     <div style={{width:"100%",position:"absolute",display:"flex",justifyContent:"space-between"}}>
                         <div style={{paddingLeft:"50px"}}>
-                            <img src="https://www.amrita.edu/sites/default/files/studentclub-life-amrita.png" alt="" style={{objectFit:"contain",height:"400px",width:"100%",boxShadow:"0 0 10px black",borderRadius:"200px"}}/>
+                            <img src="https://i.ytimg.com/vi/nPePwRN4ODI/maxresdefault.jpg" alt="" style={{objectFit:"cover",height:"400px",width:"400px",boxShadow:"0 0 10px black",borderRadius:"200px"}}/>
                         </div>
                         <div></div>
                     </div>
@@ -199,7 +199,7 @@ class Highlight extends Component {
                 <div style={{height:"420px",position:"relative",display:"flex",alignItems:"center"}}>
                     <div style={{width:"100%",position:"absolute",display:"flex",justifyContent:"space-between"}}>
                         <div style={{paddingLeft:"50px"}}>
-                            <img src="https://www.amrita.edu/sites/default/files/culturalfest-life-amrita.png" alt="" style={{objectFit:"contain",height:"400px",width:"100%",boxShadow:"0 0 10px black",borderRadius:"200px"}}/>
+                            <img src="https://citytoday.news/wp-content/uploads/2018/03/La-Dance.jpg" alt="" style={{objectFit:"cover",height:"400px",width:"400px",boxShadow:"0 0 10px black",borderRadius:"200px"}}/>
                         </div>
                         <div></div>
                     </div>

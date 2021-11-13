@@ -10,10 +10,9 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 import LabelIcon from '@material-ui/icons/Label';
 
-function Eventpage() {
-  return (
-
-      <div
+class Eventpage extends React.Component {
+  render() { 
+    return <div
         style={{
           display: "flex",
           flexDirection: "column",
@@ -26,11 +25,12 @@ function Eventpage() {
         <div className="Box1">
           <div style={{ display: "flex" }}>
             <div style={{ flex: "60%" }}>
-              <div className="Title">Journey to the success</div>
-              <div className="Subtitle">By Nagulan S, Srini</div>
+              <div className="Title">{this.props.data.Title}</div>
+              <div className="Subtitle">{this.props.data.People}</div>
             </div>
             <img
-              src={img}
+              src={this.props.data.Event_image}
+              alt=""
               width="13%"
               height="13%"
               style={{ paddingRight: "30px", paddingTop: "10px" }}
@@ -70,10 +70,10 @@ function Eventpage() {
           >
             <LabelIcon style={{ fontSize: "20" }} />
             <div className="Normaltext" style={{ paddingLeft: "5px" }}>
-              2022 Passed outs, Career, Dream
+              {this.props.data.Tags}
             </div>
             <div style={{ paddingLeft: "75%", Color: "415a80" }}>
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary" onClick={()=>window.open(this.props.data.Register_link)}>
                 Register{" "}
               </Button>
             </div>
@@ -81,31 +81,16 @@ function Eventpage() {
         </div>
         <br />
         <br />
-        <div className="Jobbox">
+        <div className="Jobbox" style={{paddingBottom:"20px"}} >
           <div className="Title">Event Description</div>
           <br />
           <div className="Normaltext1" style={{ PaddingLeft: "25px"}}>
-          Nagulan currently working in intuit (2022 passed out), a competitive coder, Full Stack Developer, 
-          Machine Learning enthusiast and Srini working in Versa (2022 passed out), a competitiva coder, Full Stack Developer, 
-          Machine Learning enthusiiast are going to give their live experiences about their life at college and their career steps.
-          They did so many hackathons and were a good competitive coders.
-          <br/>
-          <br/>
-          Nagulan S
-          <br/>
-          A diligent, dedicated, creative budding engineer with a positive attitude: An enthusiastic learner seeking an entry-level 
-          position to gain knowledge and experience in Machine Learning, Software Development, Data Science, and related areas, 
-          enabling the deployment of relevant skills resulting in mutual growth.
-          <br/>
-          <br/>
-          Srini
-          <br/>
-          A diligent, dedicated, creative budding engineer with a positive attitude: An enthusiastic learner seeking an entry-level 
-          position to gain knowledge and experience in Machine Learning, Software Development, Data Science, and related areas, 
-          enabling the deployment of relevant skills resulting in mutual growth.
+            {this.props.data.Description}
           </div>
         </div>
       </div>
-  )
+  }
 }
-export default Eventpage
+ 
+export default Eventpage;
+

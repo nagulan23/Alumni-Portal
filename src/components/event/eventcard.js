@@ -13,11 +13,11 @@ class Eventcard extends Component {
   state = {  }
   render() { 
     return ( 
-      <div className="Box" onClick={()=>this.props.history.push("/eventinfo")} style={{cursor:"pointer"}}>
+      <div className="Box" backgr onClick={()=>this.props.history.push({pathname:"/eventinfo",state: this.props.data})} style={{cursor:"pointer"}}>
         <div style={{ display: "flex" }}>
           <div style={{ flex: "60%" }}>
-            <div className="Title">Journey to the success</div>
-            <div className="Subtitle">By Nagulan S, Srini </div>
+            <div className="Title">{this.props.data.Title}</div>
+            <div className="Subtitle">{this.props.data.People}</div>
             <div
               style={{
                 display: "flex",
@@ -34,12 +34,13 @@ class Eventcard extends Component {
               </div>
               <LabelIcon style={{ fontSize: "20" }} />
               <div className="Normaltext" style={{ paddingLeft: "5px" }}>
-                2022 Passed outs, Career, Dream
+                {this.props.data.Tags}
               </div>
             </div>
           </div>
           <img
-            src={img}
+            src={this.props.data.Event_image}
+            alt=""
             width="13%"
             height="13%"
             style={{ paddingRight: "30px", paddingTop: "30px" }}
@@ -54,10 +55,8 @@ class Eventcard extends Component {
           }}
         >
           <DescriptionOutlinedIcon style={{ fontSize: "20" }} />
-          <div className="Normaltext">
-            Nagulan currently working in intuit (2022 passed out), a competitive coder, Full Stack Developer, 
-            Machine Learning enthusiast and Srini working in Versa (2022 passed out), a competitiva coder, Full Stack Developer, 
-            Machine Learning enthusi...
+          <div className="Normaltext" style={{whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>
+            {this.props.data.Description}
           </div>
         </div>
       </div> 

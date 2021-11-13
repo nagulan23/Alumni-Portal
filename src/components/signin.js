@@ -27,7 +27,7 @@ class SignPage extends Component {
                 code: code,
                 client_id: '86clfmr173e6w2',
                 client_secret: 'esFirEKzXoCAvE7q',
-                redirect_uri: 'https://alumniportal.netlify.app/signin'
+                redirect_uri: 'http://localhost:3000/signin'
             };
             const header = {
                 headers: {
@@ -55,7 +55,7 @@ class SignPage extends Component {
     }
 
     requestProfile () {
-        var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86clfmr173e6w2&scope=r_liteprofile&state=foobar&redirect_uri=https://alumniportal.netlify.app/signin`
+        var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86clfmr173e6w2&scope=r_liteprofile&state=foobar&redirect_uri=http://localhost:3000/signin`
 
         window.location.href=oauthUrl;
         

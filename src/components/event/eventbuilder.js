@@ -4,15 +4,58 @@ import Eventcard from "./eventcard"
 import footer_logo from "../../assets/transparent-logo.png"
 import SortIcon from '@material-ui/icons/Sort';
 import Button from "@material-ui/core/Button"
+import axios from 'axios';
 
-function Eventbuilder() {
-    return (
-        <div>
-          <div style={{ paddingTop:"3%",paddingLeft: "85%", Color: "415a80" }}>
-              <Button variant="contained" color="primary">
-                Add Event{" "}
-              </Button>
-            </div>
+class Eventbuilder extends React.Component {
+
+  state= {
+    data:null
+  }
+
+  constructor(props) {
+    super(props);
+    console.log("events............");
+    this.getData();
+  }
+
+  getData() {
+    console.log("getting events............");
+    var datalist=[];
+    axios.get('http://e2df-49-204-135-17.ngrok.io/final/events')
+    .then(elist=> {
+      console.log(elist.data.data);
+      elist.data.data.forEach((eid, i)  => {
+        fetch('http://e2df-49-204-135-17.ngrok.io/final/event', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            "eventid":eid
+          })
+        }).then(response => {
+          if (response.ok) {
+            response.json().then(json => {
+              //console.log(json.data)
+              datalist.push(json.data);
+              this.setState({data:datalist});
+            });
+          }
+        });
+      });
+      console.log(datalist);
+    });
+    /*axios.post('http://localhost:8081/final/event',JSON.stringify({"eventid":"e101"}),{headers:{Accept: 'application/json'}})
+    .then(edata=>{
+      //datalist.append(edata);
+      console.log(edata);
+    });*/
+    
+  }
+
+  render() { 
+    return(
+      <div>
           <div
             style={{
               paddingTop:"5%",
@@ -32,6 +75,7 @@ function Eventbuilder() {
             height: "100%",
             display: "flex",
             flexDirection: "row",
+            justifyContent:"center",
             overflow: "auto",
           }}
         >
@@ -39,25 +83,27 @@ function Eventbuilder() {
             style={{
               display: "flex",
               flexDirection: "column",
-              paddingLeft: "13%",
+              width:"75%",
               paddingTop: "2%",
-              paddingRight: "13%",
+              height:"1000px"
             }}
           >
-            <Eventcard />
-            <div style={{ height: "20px", width: "100%" }}></div>
-            <Eventcard />
-            <div style={{ height: "20px", width: "100%" }}></div>
-            <Eventcard />
-            <div style={{ height: "20px", width: "100%" }}></div>
-            <Eventcard />
-            <div style={{ height: "20px", width: "100%" }}></div>
-            <Eventcard />
+            {
+              (this.state.data==null)?
+              <div className="loader" style={{alignSelf:"center"}}></div>:
+              this.state.data.map((di)=>{
+                return <div>
+                  <Eventcard data={di}/>
+                  <div style={{ height: "20px", width: "100%" }}></div>
+                </div>
+              })
+            }
           </div>
         </div>
         <div style={{ height: "50px", width: "100%" }}></div>
-        </div>
-    )
+      </div>
+    );
+  }
 }
-
-export default Eventbuilder
+ 
+export default Eventbuilder;

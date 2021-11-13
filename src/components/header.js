@@ -115,7 +115,7 @@ class Header extends Component {
                         <ProfilePage />
                     </Route>
                     <Route exact path="/jobinfo">
-                        <Jobpager/>
+                        <Jobpager data={this.props.location.state}/>
                     </Route>
                     <Route exact path="/job">
                         <Pagebuilder/>
@@ -127,7 +127,7 @@ class Header extends Component {
                         <BlogPage/>
                     </Route>
                     <Route exact path="/eventinfo">
-                        <Eventpager/>
+                        <Eventpager data={this.props.location.state}/>
                     </Route>
                     <Route exact path="/event">
                         <Eventbuilder/>
