@@ -7,7 +7,12 @@ import TextField from "@material-ui/core/TextField"
 import { makeStyles } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
 import Slider from "@material-ui/core/Slider"
+import LoopIcon from '@material-ui/icons/Loop';
+import { IconButton } from '@material-ui/core';
+import axios from 'axios';
 
+
+/*
 const useStyles = makeStyles({
   root: {
     width: 100,
@@ -17,21 +22,6 @@ const useStyles = makeStyles({
   },
 })
 
-const marks = [
-  { value: 0, label: "" },
-  { value: 25, label: "" },
-  { value: 50, label: "" },
-  { value: 100, label: "" },
-]
-
-function valuetext(value) {
-  return `${value}lpa`
-}
-
-function valueLabelFormat(value) {
-  return marks.findIndex(mark => mark.value === value) + 1
-}
-
 const Location = [{ location: "Bangalore" }, { location: "Chennai" }]
 const Experience = [
   { exp: "0 years" },
@@ -40,99 +30,120 @@ const Experience = [
   { exp: "10+ years" },
 ]
 const Role = [{ job: "Software Engineer" }, { job: "System Engineer" }]
-function Jobfilter() {
-  const classes = useStyles()
+*/
+class Jobfilter extends React.Component {
 
-    return (
-      <div className="jSidebar">
+  state={
+    selected_location:"",
+    selected_company:"",
+    selected_role:"",
+  }
+
+  changelocation(event, value) {
+    console.log(value);
+    if(value!=null)
+    this.setState({selected_location:value});
+    else
+    this.setState({selected_location:""});
+  }
+
+  changecompany(event, value) {
+    console.log(value);
+    if(value!=null)
+    this.setState({selected_company:value});
+    else
+    this.setState({selected_company:""});
+  }
+
+  changerole(event, value) {
+    console.log(value);
+    if(value!=null)
+    this.setState({selected_role:value});
+    else
+    this.setState({selected_role:""});
+  }
+
+  render() { 
+    return <div className="jSidebar">
+      <div style={{display:"flex",alignItems:"center"}}>
         <div className="Text">Filter</div>
-        <div className="jline1"></div>
-        <div className="Text1">Location</div>
-        <Autocomplete
-          id="combo-box-demo"
-          options={Location}
-          getOptionLabel={option => option.location}
-          style={{
-            paddingLeft: "10px",
-            paddingTop: "10px",
-            paddingBottom: "40px",
-            height: "15px",
-            Color: "#E7E6E4",
-            borderRadius: "10px",
-          }}
-          renderInput={params => (
-            <TextField
-              {...params}
-              style={{ background: "white", borderRadius: "10px" }}
-              label=""
-              variant="outlined"
-              Color="#E7E6E4"
-            />
-          )}
-        />
-        <div className="Text1">Experience</div>
-        <Autocomplete
-          id="combo-box-demo"
-          options={Experience}
-          getOptionLabel={option => option.exp}
-          style={{
-            paddingLeft: "10px",
-            paddingBottom: "40px",
-            paddingTop: "10px",
-            height: 20,
-            Color: "#E7E6E4",
-          }}
-          renderInput={params => (
-            <TextField
-              {...params}
-              style={{ background: "white", borderRadius: "10px" }}
-              label=""
-              variant="outlined"
-              Color="#E7E6E4"
-            />
-          )}
-        />
-        <div className="Text1">Role</div>
-        <Autocomplete
-          id="combo-box-demo"
-          options={Role}
-          getOptionLabel={option => option.job}
-          style={{
-            paddingLeft: "10px",
-            paddingBottom: "40px",
-            paddingTop: "10px",
-            height: 20,
-            Color: "#E7E6E4",
-          }}
-          renderInput={params => (
-            <TextField
-              {...params}
-              style={{ background: "white", borderRadius: "10px" }}
-              label=""
-              variant="outlined"
-              Color="#E7E6E4"
-            />
-          )}
-        />
-        <div className="Text1">Min Salary</div>
-        <div className={classes.root}>
-          <Slider
-            defaultValue={30}
-            valueLabelFormat={valueLabelFormat}
-            getAriaValueText={valuetext}
-            aria-labelledby="discrete-slider-restrict"
-            style={{
-              width: 180,
-              color: "#E7E6E4",
-              paddingLeft: "10px",
-              fontColor: "#E7E6E4",
-            }}
-            step={null}
-            valueLabelDisplay="auto"
-            marks={marks}
-          />
-        </div>
+          <IconButton >
+              <LoopIcon style={{color:"white"}} onClick={()=>this.props.updateData({"location":this.state.selected_location,"name":this.state.selected_company,"role":this.state.selected_role})}/>
+          </IconButton>
       </div>
-    );
+    <div className="jline1"></div>
+    <div className="Text1">Location</div>
+    <Autocomplete
+      id="combo-box-demo"
+      options={this.props.location}
+      onChange={this.changelocation.bind(this)}
+      value={this.state.selected_location}
+      style={{
+        paddingLeft: "10px",
+        paddingTop: "10px",
+        paddingBottom: "40px",
+        height: "15px",
+        Color: "#E7E6E4",
+        borderRadius: "10px",
+      }}
+      renderInput={params => (
+        <TextField
+          {...params}
+          style={{ background: "white", borderRadius: "10px" }}
+          label=""
+          variant="outlined"
+          Color="#E7E6E4"
+        />
+      )}
+    />
+    <div className="Text1">Company</div>
+    <Autocomplete
+      id="combo-box-demo"
+      options={this.props.company}
+      onChange={this.changecompany.bind(this)}
+      value={this.state.selected_company}
+      style={{
+        paddingLeft: "10px",
+        paddingBottom: "40px",
+        paddingTop: "10px",
+        height: 20,
+        Color: "#E7E6E4",
+      }}
+      renderInput={params => (
+        <TextField
+          {...params}
+          style={{ background: "white", borderRadius: "10px" }}
+          label=""
+          variant="outlined"
+          Color="#E7E6E4"
+        />
+      )}
+    />
+    <div className="Text1">Role</div>
+    <Autocomplete
+      id="combo-box-demo"
+      options={this.props.role}
+      onChange={this.changerole.bind(this)}
+      value={this.state.selected_role}
+      style={{
+        paddingLeft: "10px",
+        paddingBottom: "40px",
+        paddingTop: "10px",
+        height: 20,
+        Color: "#E7E6E4",
+      }}
+      renderInput={params => (
+        <TextField
+          {...params}
+          style={{ background: "white", borderRadius: "10px" }}
+          label=""
+          variant="outlined"
+          Color="#E7E6E4"
+        />
+      )}
+    />
+  </div>;
+  }
 }
-export default Jobfilter
+ 
+export default Jobfilter;

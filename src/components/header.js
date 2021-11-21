@@ -50,6 +50,7 @@ class Header extends Component {
     }
 
     render() { 
+        window.scroll(0, 0);
         return ( 
             <div style={{paddingTop:"70px",backgroundColor:"#FAF8F0",width:"100%",display:"flex",flexDirection:"column",overflow:"auto"}}>
                 <div className="header-style" style={{position:"fixed",top:"0px",fontWeight:"500",width:"calc( 100% - 40px )",color:"#FAF8F0",padding:"10px",paddingLeft:"20px",paddingRight:"20px",boxShadow:"0 0 10px black",zIndex:1,display:"flex",alignItems:"Center",justifyContent:"space-between"}}>

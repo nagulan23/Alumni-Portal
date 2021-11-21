@@ -7,7 +7,10 @@ import axios from 'axios';
 class Pagebuilder extends React.Component {
 
   state= {
-    data:null
+    data:null,
+    location: ["Bangalore","Chennai" ],
+    company : ["abc1","abc2"],
+    role: ["Software Engineer" ,"System Engineer" ]
   }
 
   constructor(props) {
@@ -16,14 +19,68 @@ class Pagebuilder extends React.Component {
     this.getData();
   }
 
+  updateData(data){
+    var datalist=[];
+    console.log("..........//");
+    console.log(data);
+    fetch('http://77a8-223-187-127-66.ngrok.io/final/filterjob', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        "location":data.location,
+        "name":data.name,
+        "role":data.role
+      })
+    }).then(response => {
+      console.log(response);
+      if (response.ok) {
+        response.json().then(jlist=> {
+          console.log(jlist);
+          console.log(jlist.data);
+          jlist.data.forEach((jid, i)  => {
+            fetch('http://77a8-223-187-127-66.ngrok.io/final/job', {
+              method: 'POST',
+              headers: {
+                Accept: 'application/json',
+              },
+              body: JSON.stringify({
+                "jobid":jid
+              })
+            }).then(response => {
+              if (response.ok) {
+                response.json().then(json => {
+                  //console.log(json.data)
+                  datalist.push(json.data);
+                  this.setState({data:datalist});
+                });
+              }
+            });
+          });
+          console.log(datalist);
+        });
+      }
+    });
+  }
+
   getData() {
     console.log("getting jobs............");
+
+    axios.get('http://77a8-223-187-127-66.ngrok.io/final/filterinfo')
+    .then(response =>{
+      console.log(response.data);
+      this.setState({role:response.data.role});
+      this.setState({location:response.data.location});
+      this.setState({company:response.data.company});
+    });
+
     var datalist=[];
-    axios.get('http://e2df-49-204-135-17.ngrok.io/final/jobs')
+    axios.get('http://77a8-223-187-127-66.ngrok.io/final/jobs')
     .then(jlist=> {
       console.log(jlist.data.data);
       jlist.data.data.forEach((jid, i)  => {
-        fetch('http://e2df-49-204-135-17.ngrok.io/final/job', {
+        fetch('http://77a8-223-187-127-66.ngrok.io/final/job', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -57,7 +114,7 @@ class Pagebuilder extends React.Component {
       }}
     >
       <div style={{display:"flex",width:"400px",backgroundColor:"#415a80",alignItems:"stretch"}}>
-        <Jobfilter></Jobfilter>
+        <Jobfilter location={this.state.location} company={this.state.company} role={this.state.role} updateData={this.updateData.bind(this)}></Jobfilter>
       </div>
       <div
         style={{

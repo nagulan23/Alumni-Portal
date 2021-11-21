@@ -11,7 +11,8 @@ import LoginIcon from '@mui/icons-material/Login';
 class SignPage extends Component {
 
     state = { 
-        page: 1,
+        rollno:"",
+        password:""
     }
 
     constructor(props){
@@ -38,10 +39,13 @@ class SignPage extends Component {
                 .then(response => {
                     console.log(response);
                     console.log('Bearer '+response.data.access_token);
-                    axios.get('https://api.linkedin.com/v2/me',{
+                    fetch('https://api.linkedin.com/v2/me', {
+                        method: 'GET',
+                        mode:"no-cors",
                         headers: {
-                          'Authorization': 'Bearer '+response.data.access_token
-                        }
+                            "Authorization": 'Bearer '+response.data.access_token,
+                            'Access-Control-Allow-Origin':'*'
+                        },
                     })
                     .then(response =>console.log(response))
                     .catch(err=>console.log(err));
@@ -49,9 +53,6 @@ class SignPage extends Component {
                 .catch(err=>console.log(err));
         }
         console.log('..');
-        /*fetch("https://api.linkedin.com/v2/me")
-        .then((response) => response.json())
-        .then((data) => console.log(data));*/
     }
 
     requestProfile () {
@@ -78,8 +79,12 @@ class SignPage extends Component {
         );*/
       };
 
-    checkingRollNumber(){
-        this.setState({page:3});
+    onChange1(e){
+        this.setState({rollno:e.target.value});
+    }
+
+    onChange2(e){
+        this.setState({password:e.target.value});
     }
 
     render() { 
@@ -95,38 +100,26 @@ class SignPage extends Component {
                         </div>
                     </div>
                     <div style={{display:"flex",flexDirection:"column",marginTop:"100px"}}>
-                        {
-                            (this.state.page===1)?
-                            <div>
-                                <div style={{fontFamily:"'Josefin Sans', sans-serif",fontSize:"30px",fontWeight:"700",marginBottom:"20px"}}>
-                                    Log in to your account
-                                </div>
-                                <LinkedInLoginButton onClick={this.requestProfile.bind(this)}/>
-                            </div>:
-                            <div>
-                            <div style={{fontFamily:"'Josefin Sans', sans-serif",fontSize:"30px",fontWeight:"700",marginBottom:"20px"}}>
-                                Finishing Sign up
-                            </div>
-                            <div style={{display:"flex",height:"42px"}}>
-                                <input placeholder="Your Amrita Roll Number" style={{paddingLeft:"10px",paddingRight:"10px",fontSize:"20px",width:"100%",border:"3px solid #043353",borderRadius:"8px",fontWeight:"700",color:"#E44652"}}/>
-                            </div>
-                            {
-                                (this.state.page===2)?
-                                <div className="profile-add-button" onClick={this.checkingRollNumber.bind(this)} style={{marginTop:"20px",boxShadow:"0 0 10px gray",cursor:"pointer",alignItems:"center",backgroundColor:"#065285",padding:"10px",borderRadius:"5px",display:"inline-flex",color:"white"}}>
-                                    <div style={{fontWeight:"500",paddingRight:"10px"}}>
-                                        Check Roll Number
-                                    </div>
-                                    <FactCheckIcon  style={{fontSize:"25px"}}/>
-                                </div>:
-                                <div className="profile-add-button" style={{marginTop:"20px",boxShadow:"0 0 10px gray",cursor:"pointer",alignItems:"center",backgroundColor:"#065285",padding:"10px",borderRadius:"5px",display:"inline-flex",color:"white"}}>
-                                    <div style={{fontWeight:"500",paddingRight:"10px"}}>
-                                        Lets Connect
-                                    </div>
-                                    <LoginIcon  style={{fontSize:"25px"}}/>
-                                </div>
-                            }          
+                        <div>
+                            <LinkedInLoginButton onClick={this.requestProfile.bind(this)}/>
                         </div>
-                        }
+                        <div>
+                        <div style={{fontFamily:"'Josefin Sans', sans-serif",fontSize:"25px",margin:"20px",marginLeft:"10px",color:"#E44652"}}>
+                            or
+                        </div>
+                        <div style={{display:"flex",height:"42px"}}>
+                            <input className="sigin-input" type="text" value={this.state.rollno} onChange={this.onChange1.bind(this)} placeholder="Amrita Roll Number" style={{paddingLeft:"10px",paddingRight:"10px",fontSize:"20px",width:"100%",border:"3px solid #043353",borderRadius:"8px",fontWeight:"700",color:"#E44652"}}/>
+                        </div>
+                        <div style={{display:"flex",height:"42px",paddingTop:"10px"}}>
+                            <input className="sigin-input" type="password" value={this.state.password} onChange={this.onChange2.bind(this)} placeholder="Domain Password" style={{paddingLeft:"10px",paddingRight:"10px",fontSize:"20px",width:"100%",border:"3px solid #E44652",borderRadius:"8px",fontWeight:"700",color:"#043353"}}/>
+                        </div>
+                        <div className="profile-add-button" style={{marginTop:"20px",boxShadow:"0 0 10px gray",cursor:"pointer",alignItems:"center",backgroundColor:"#065285",padding:"10px",borderRadius:"5px",display:"inline-flex",color:"white"}}>
+                            <div style={{fontWeight:"500",paddingRight:"10px"}}>
+                                Lets Connect
+                            </div>
+                            <LoginIcon  style={{fontSize:"25px"}}/>
+                        </div>
+                        </div>
                     </div>
                 </div>
                 <div style={{height:"100%",width:"70%",display:"flex",flexDirection:"column",justifyContent:"space-between",alignItems:"center",backgroundImage:`url("https://www.insidescience.org/sites/default/files/2021-05/Faces.jpg")`,backgroundSize:"cover",aspectRatio:"1/1"}}>

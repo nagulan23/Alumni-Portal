@@ -3,6 +3,42 @@ import Eventcard from "./event/eventcard"
 import AddBoxIcon from '@material-ui/icons/AddBox';
 
 class MyEvents extends React.Component {
+
+    state= {
+        data:null,
+    }
+
+    constructor(props) {
+        super(props);
+        console.log("my events............");
+        this.getData();
+      }
+    getData() {
+        console.log("getting events............");
+    
+        var datalist=[];
+        fetch('http://77a8-223-187-127-66.ngrok.io/final/myevents', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+            },
+            body: JSON.stringify({
+                "Token":"t101",
+            })
+            }).then(response => {
+            console.log(response);
+            if (response.ok) {
+                response.json().then(jlist=> {
+                console.log(jlist);
+                console.log(jlist.data);
+                this.setState({data:jlist.data});
+                console.log(datalist);
+                });
+            }
+            });
+      }
+
+
     render() { 
         return <div style={{display:"flex",width:"100%"}}>
                 <div style={{width:"calc( 80% - 20px)"}}>
@@ -13,16 +49,16 @@ class MyEvents extends React.Component {
                         padding: "10px",
                         }}
                     >
-                        <Eventcard />
-                        <div style={{ height: "20px", width: "100%" }}></div>
-                        <Eventcard />
-                        <div style={{ height: "20px", width: "100%" }}></div>
-                        <Eventcard />
-                        <div style={{ height: "20px", width: "100%" }}></div>
-                        <Eventcard />
-                        <div style={{ height: "20px", width: "100%" }}></div>
-                        <Eventcard />
-                        <div style={{ height: "50px", width: "100%" }}></div>
+                        {
+                            (this.state.data==null)?
+                            <div className="loader" style={{alignSelf:"center"}}></div>:
+                            this.state.data.map((di)=>{
+                                return <div>
+                                <Eventcard data={di}/>
+                                <div style={{ height: "20px", width: "100%" }}></div>
+                                </div>
+                            })
+                        }
                     </div>
                 </div>
                 <div style={{width:"calc( 20% - 20px)",margin:"10px"}}>

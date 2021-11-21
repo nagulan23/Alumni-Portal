@@ -1,8 +1,43 @@
 import React, { Component } from 'react';
 import Jobcard from "./job/jobcard"
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import axios from 'axios';
 
 class MyJobs extends React.Component {
+
+    state= {
+        data:null,
+    }
+
+    constructor(props) {
+        super(props);
+        console.log("my jobs............");
+        this.getData();
+      }
+    getData() {
+        console.log("getting jobs............");
+    
+        var datalist=[];
+        fetch('http://77a8-223-187-127-66.ngrok.io/final/myjobs', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+            },
+            body: JSON.stringify({
+                "Token":"t101",
+            })
+            }).then(response => {
+            console.log(response);
+            if (response.ok) {
+                response.json().then(jlist=> {
+                console.log(jlist);
+                console.log(jlist.data);
+                this.setState({data:jlist.data});
+                console.log(datalist);
+                });
+            }
+            });
+      }
     render() { 
         return <div style={{display:"flex",width:"100%"}}>
                 <div style={{width:"calc( 80% - 20px)"}}>
@@ -13,16 +48,16 @@ class MyJobs extends React.Component {
                         padding: "10px",
                         }}
                     >
-                        <Jobcard />
-                        <div style={{ height: "20px", width: "100%" }}></div>
-                        <Jobcard />
-                        <div style={{ height: "20px", width: "100%" }}></div>
-                        <Jobcard />
-                        <div style={{ height: "20px", width: "100%" }}></div>
-                        <Jobcard />
-                        <div style={{ height: "20px", width: "100%" }}></div>
-                        <Jobcard />
-                        <div style={{ height: "50px", width: "100%" }}></div>
+                        {
+                            (this.state.data==null)?
+                            <div className="loader" style={{alignSelf:"center"}}></div>:
+                            this.state.data.map((di)=>{
+                                return <div>
+                                    <Jobcard data={di}/>
+                                    <div style={{ height: "20px", width: "100%" }}></div>
+                                </div>
+                            })
+                        }
                     </div>
                 </div>
                 <div style={{width:"calc( 20% - 20px)",margin:"10px"}}>

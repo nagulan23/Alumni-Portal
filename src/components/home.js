@@ -136,18 +136,18 @@ class Blogs extends Component {
                         </div>
                     </div>
                     <div style={{display:"flex",flexDirection:"column",width:"25%",justifyContent:"space-between"}}>
-                        <div className="blog-card" style={{position:"relative",width:"100%",backgroundImage:`url("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church-women%27s-ladies-day-high-tea-event-design-template-9418f1a5bb35985553ced03545c068a3.jpg?ts=1594475806")`,backgroundSize:"cover",backgroundPosition:"center",aspectRatio:"1/1"}}>
+                        <div className="blog-card" style={{position:"relative",width:"100%",backgroundImage:`url("https://blogs.lshtm.ac.uk/alumni/files/2020/02/5-730x350.jpg")`,backgroundSize:"cover",backgroundPosition:"center",aspectRatio:"1/1"}}>
                             <div style={{position:"absolute",bottom:"0px",width:"calc( 100% - 40px )",fontSize:"15px",padding:"20px",backgroundColor:"rgba(0, 0, 0, 0.7)",color:"white",float:"bottom"}}>Amrita Organizes National Webinar on Booming Careers in Science in the Past-Covid Era</div>
                         </div>
-                        <div className="blog-card" style={{position:"relative",width:"100%",backgroundImage:`url("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church-women%27s-ladies-day-high-tea-event-design-template-9418f1a5bb35985553ced03545c068a3.jpg?ts=1594475806")`,backgroundSize:"cover",backgroundPosition:"center",aspectRatio:"1/1"}}>
+                        <div className="blog-card" style={{position:"relative",width:"100%",backgroundImage:`url("https://www.bil-guild.org/wp-content/uploads/2019/08/P14-ALumni.jpg")`,backgroundSize:"cover",backgroundPosition:"center",aspectRatio:"1/1"}}>
                             <div style={{position:"absolute",bottom:"0px",width:"calc( 100% - 40px )",fontSize:"15px",padding:"20px",backgroundColor:"rgba(0, 0, 0, 0.7)",color:"white",float:"bottom"}}>Amrita Organizes National Webinar on Booming Careers in Science in the Past-Covid Era</div>
                         </div>
                     </div>
                     <div style={{display:"flex",flexDirection:"column",width:"25%",justifyContent:"space-between"}}>
-                        <div className="blog-card" style={{position:"relative",width:"100%",backgroundImage:`url("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church-women%27s-ladies-day-high-tea-event-design-template-9418f1a5bb35985553ced03545c068a3.jpg?ts=1594475806")`,backgroundSize:"cover",backgroundPosition:"center",aspectRatio:"1/1"}}>
+                        <div className="blog-card" style={{position:"relative",width:"100%",backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqxffoPyZlMu-jWKoHfBxuVTxNBd7-8uSj1JlLWzINKcOS8ZYH0Oea3CqGA7y0wnHT3Wk&usqp=CAU")`,backgroundSize:"cover",backgroundPosition:"center",aspectRatio:"1/1"}}>
                             <div style={{position:"absolute",bottom:"0px",width:"calc( 100% - 40px )",fontSize:"15px",padding:"20px",backgroundColor:"rgba(0, 0, 0, 0.7)",color:"white",float:"bottom"}}>Amrita Organizes National Webinar on Booming Careers in Science in the Past-Covid Era</div>
                         </div>
-                        <div className="blog-card" style={{position:"relative",width:"100%",backgroundImage:`url("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church-women%27s-ladies-day-high-tea-event-design-template-9418f1a5bb35985553ced03545c068a3.jpg?ts=1594475806")`,backgroundSize:"cover",backgroundPosition:"center",aspectRatio:"1/1"}}>
+                        <div className="blog-card" style={{position:"relative",width:"100%",backgroundImage:`url("https://png.pngtree.com/thumb_back/fh260/background/20201016/pngtree-black-friday-sale-banner-on-red-background-perfect-template-for-flyers-image_420577.jpg")`,backgroundSize:"cover",backgroundPosition:"center",aspectRatio:"1/1"}}>
                             <div style={{position:"absolute",bottom:"0px",width:"calc( 100% - 40px )",fontSize:"15px",padding:"20px",backgroundColor:"rgba(0, 0, 0, 0.7)",color:"white",float:"bottom"}}>Amrita Organizes National Webinar on Booming Careers in Science in the Past-Covid Era</div>
                         </div>
                     </div>
@@ -216,7 +216,7 @@ class Highlight extends Component {
                 <div style={{height:"420px",position:"relative",display:"flex",alignItems:"center"}}>
                     <div style={{width:"100%",position:"absolute",display:"flex",justifyContent:"space-between"}}>
                         <div style={{paddingLeft:"50px"}}>
-                            <img src="https://www.amrita.edu/sites/default/files/sport-life-amrita.png" alt="" style={{objectFit:"contain",height:"400px",width:"100%",boxShadow:"0 0 10px black",borderRadius:"200px"}}/>
+                            <img src="https://content.jdmagicbox.com/comp/coimbatore/58/0422p422stdf004858/catalogue/amrita-vishwa-vidyapeetham-university-ettimadai-coimbatore-universities-3iw0004.jpg" alt="" style={{objectFit:"cover",height:"400px",width:"400px",boxShadow:"0 0 10px black",borderRadius:"200px"}}/>
                         </div>
                         <div></div>
                     </div>

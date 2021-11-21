@@ -42,7 +42,6 @@ const Experience = [
 const Role = [{ job: "Software Engineer" }, { job: "System Engineer" }]
 function Jobfilter() {
   const classes = useStyles()
-  {
     return (
       <div className="Sidebar">
         <div className="Text">Filter</div>
@@ -138,6 +137,5 @@ function Jobfilter() {
         </div>
       </div>
     )
-  }
 }
 export default Jobfilter
