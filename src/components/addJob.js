@@ -10,10 +10,10 @@ class AddJob extends React.Component {
     state={
         company_name:"",
         logo:"",
-        your_role:"",
         job_title:"",
         job_location:"",
-        salary:"",
+        min_salary:"",
+        max_salary:"",
         job_description:"",
         requirements:"",
         reg_link:"",
@@ -26,17 +26,17 @@ class AddJob extends React.Component {
         else if(inputi===2){
             this.setState({ logo: event.target.value });
         }
-        else if(inputi===3){
-            this.setState({ your_role: event.target.value });
-        }
         else if(inputi===4){
             this.setState({ job_title: event.target.value });
         }
         else if(inputi===5){
             this.setState({ job_location: event.target.value });
         }
-        else if(inputi===6){
-            this.setState({ salary: event.target.value });
+        else if(inputi===61){
+            this.setState({ min_salary: event.target.value });
+        }
+        else if(inputi===62){
+            this.setState({ max_salary: event.target.value });
         }
         else if(inputi===7){
             this.setState({ job_description: event.target.value });
@@ -89,14 +89,14 @@ class AddJob extends React.Component {
                                 <input required value={this.state.company_name} onChange={this.handleChange.bind(this,1)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
                                 <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Company Logo link<span style={{color:"red"}}>*</span></div>
                                 <input required value={this.state.logo} onChange={this.handleChange.bind(this,2)} className="profile-input-bar" type="url" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
-                                <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Your role in the hiring process<span style={{color:"red"}}>*</span></div>
-                                <input required value={this.state.your_role} onChange={this.handleChange.bind(this,3)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
                                 <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Job title<span style={{color:"red"}}>*</span></div>
                                 <input required value={this.state.job_title} onChange={this.handleChange.bind(this,4)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
                                 <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Job location<span style={{color:"red"}}>*</span></div>
                                 <input required value={this.state.job_location} onChange={this.handleChange.bind(this,5)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
-                                <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Salary</div>
-                                <input value={this.state.salary} onChange={this.handleChange.bind(this,6)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
+                                <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Min Salary<span style={{color:"red"}}>*</span></div>
+                                <input value={this.state.min_salary} onChange={this.handleChange.bind(this,61)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
+                                <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Max Salary<span style={{color:"red"}}>*</span></div>
+                                <input value={this.state.max_salary} onChange={this.handleChange.bind(this,62)} className="profile-input-bar" type="text" style={{width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></input>
                                 <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Job Description<span style={{color:"red"}}>* </span> (Min Length: 30 chars)</div>
                                 <textarea required value={this.state.job_description} onChange={this.handleChange.bind(this,7)} className="profile-input-bar" style={{border:"2px solid black",minHeight:"150px",resize:"vertical",width:"calc( 100% - 20px)",fontSize:"20px",padding:"10px",borderRadius:"10px"}}></textarea>
                                 <div style={{fontSize:"20px",fontWeight:"500",marginBottom:"5px",marginTop:"20px"}}>Requirements<span style={{color:"red"}}>* </span> (Min Length: 30 chars)</div>
@@ -126,14 +126,6 @@ class AddJob extends React.Component {
                         </div>
                         <div style={{display:"flex"}}>
                             {
-                                (this.state.your_role==="")?
-                                <CancelIcon style={{color:"red"}} visible="true"/>:
-                                <CheckCircleIcon style={{color:"green"}}/>
-                            }
-                            <div style={{fontWeight:"500"}}>Your role in the hiring process</div>
-                        </div>
-                        <div style={{display:"flex"}}>
-                            {
                                 (this.state.job_title==="")?
                                 <CancelIcon style={{color:"red"}} visible="true"/>:
                                 <CheckCircleIcon style={{color:"green"}}/>
@@ -149,8 +141,20 @@ class AddJob extends React.Component {
                             <div style={{fontWeight:"500"}}>Job location</div>
                         </div>
                         <div style={{display:"flex"}}>
-                            <CheckCircleIcon style={{color:"green"}}/>
-                            <div style={{fontWeight:"500"}}>Salary</div>
+                            {
+                                (this.state.min_salary==="")?
+                                <CancelIcon style={{color:"red"}} visible="true"/>:
+                                <CheckCircleIcon style={{color:"green"}}/>
+                            }
+                            <div style={{fontWeight:"500"}}>Min Salary</div>
+                        </div>
+                        <div style={{display:"flex"}}>
+                            {
+                                (this.state.max_salary==="")?
+                                <CancelIcon style={{color:"red"}} visible="true"/>:
+                                <CheckCircleIcon style={{color:"green"}}/>
+                            }
+                            <div style={{fontWeight:"500"}}>Max Salary</div>
                         </div>
                         <div style={{display:"flex"}}>
                             {
@@ -160,6 +164,7 @@ class AddJob extends React.Component {
                             }
                             <div style={{fontWeight:"500"}}>Job Description</div>
                         </div>
+                        
                         <div style={{display:"flex"}}>
                             {
                                 (this.state.requirements.length<30)?

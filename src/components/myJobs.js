@@ -18,7 +18,7 @@ class MyJobs extends React.Component {
         console.log("getting jobs............");
     
         var datalist=[];
-        fetch('http://77a8-223-187-127-66.ngrok.io/final/myjobs', {
+        fetch('https://77a8-223-187-127-66.ngrok.io/final/myjobs', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

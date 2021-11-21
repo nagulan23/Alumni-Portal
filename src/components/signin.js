@@ -15,6 +15,26 @@ class SignPage extends Component {
         password:""
     }
 
+    signin(){
+        fetch('https://77a8-223-187-127-66.ngrok.io/final/login', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            "Rollno":this.state.rollno,
+            "Password":this.state.password
+          })
+        }).then(response => {
+          if (response.ok) {
+            response.json().then(json => {
+                console.log(json);
+                this.props.history.push("/home");
+            });
+          }
+        });
+    }
+
     constructor(props){
         super(props);
         const queryParams = new URLSearchParams(window.location.search);
@@ -113,7 +133,7 @@ class SignPage extends Component {
                         <div style={{display:"flex",height:"42px",paddingTop:"10px"}}>
                             <input className="sigin-input" type="password" value={this.state.password} onChange={this.onChange2.bind(this)} placeholder="Domain Password" style={{paddingLeft:"10px",paddingRight:"10px",fontSize:"20px",width:"100%",border:"3px solid #E44652",borderRadius:"8px",fontWeight:"700",color:"#043353"}}/>
                         </div>
-                        <div className="profile-add-button" style={{marginTop:"20px",boxShadow:"0 0 10px gray",cursor:"pointer",alignItems:"center",backgroundColor:"#065285",padding:"10px",borderRadius:"5px",display:"inline-flex",color:"white"}}>
+                        <div className="profile-add-button" onClick={this.signin.bind(this)} style={{marginTop:"20px",boxShadow:"0 0 10px gray",cursor:"pointer",alignItems:"center",backgroundColor:"#065285",padding:"10px",borderRadius:"5px",display:"inline-flex",color:"white"}}>
                             <div style={{fontWeight:"500",paddingRight:"10px"}}>
                                 Lets Connect
                             </div>

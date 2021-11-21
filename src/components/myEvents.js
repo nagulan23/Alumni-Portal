@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Eventcard from "./event/eventcard"
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import axios from 'axios';
 
 class MyEvents extends React.Component {
 
@@ -17,7 +18,7 @@ class MyEvents extends React.Component {
         console.log("getting events............");
     
         var datalist=[];
-        fetch('http://77a8-223-187-127-66.ngrok.io/final/myevents', {
+        fetch('https://77a8-223-187-127-66.ngrok.io/final/myevents', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
