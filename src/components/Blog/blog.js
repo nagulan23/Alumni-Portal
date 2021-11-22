@@ -38,7 +38,7 @@ class BlogPage extends Component {
             }).then(response => {
               if (response.ok) {
                 response.json().then(json => {
-                  //console.log(json.data)
+                  console.log(json.data)
                   datalist.push(json.data);
                   this.setState({data:datalist});
                 });
@@ -75,7 +75,7 @@ class BlogPage extends Component {
                 <div style={{ height: '10px' }}></div>
                 {
                     (this.state.data==null)?
-                    <div className="loader" style={{alignSelf:"center"}}></div>:
+                    <div style={{alignSelf:"center"}}></div>:
                     this.state.data.map((di)=>{
                         return <div>
                         <Blogcard data={di}/>
