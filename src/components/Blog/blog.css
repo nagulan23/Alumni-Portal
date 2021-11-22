@@ -1,0 +1,75 @@
+.Boxe {
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+  border: 1px ridge #606266;
+  background-color: white;
+  width: 1000px;
+  height: 250px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.Date {
+  padding-left: 25px;
+  font-size: 13px;
+  height: 15px;
+  color: black;
+  width: 150px;
+}
+
+.Time {
+  padding-left: 5px;
+  font-size: 13px;
+  height: 15px;
+  color: black;
+  width: 70px;
+}
+
+.Genre {
+  padding-right: 0px;
+  padding-left: 3px;
+  font-size: 13px;
+  height: 18px;
+  color: white;
+  width: 130px;
+  border: 1.5px ridge black;
+  background-color: #415a80;
+}
+
+.Blogimage {
+  height: 220px;
+  width: 320px;
+  padding-top: 10px;
+  padding-right: 70px;
+}
+
+.Name {
+  padding-left: 10px;
+  font-size: 18px;
+  padding-top: 10px;
+  font-weight: 500;
+  color: black;
+}
+
+.Heading {
+  padding-left: 25px;
+  padding-top: 0px;
+  font-weight: bold;
+  font-size: 20px;
+  height: 60px;
+  color: black;
+  width: "550px";
+}
+
+.Subject {
+  padding-left: 25px;
+  padding-top: 0px;
+  font-size: 15px;
+  width: 600px;
+  height: 45px;
+}
+
+.links {
+  color: blue;
+  font-size: 12px;
+  padding-left: 23px;
+}

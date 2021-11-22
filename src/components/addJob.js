@@ -51,8 +51,6 @@ class AddJob extends React.Component {
 
 
     urlValidator(url){
-        console.log("123456789")
-        console.log(url)
         var result=true;
         try {
             var temp = new URL(url);
@@ -63,6 +61,33 @@ class AddJob extends React.Component {
           return(<CheckCircleIcon style={{color:"green"}}/>);
         else
           return(<CancelIcon style={{color:"red"}} visible="true"/>);
+    }
+
+    postData(){
+        console.log(this.state);
+        fetch('https://77a8-223-187-127-66.ngrok.io/final/addjob', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+            },
+            body: JSON.stringify({
+                "role":this.state.role,
+                "name":this.state.company_name,
+                "salaryl":this.state.salaryl,
+                "salaryh":this.state.salaryh,
+                "location":this.state.location,
+                "jobdescription":this.state.job_description,
+                "Token":"t101",
+                "jobid":'' +(Math.random()*1000),
+                "link":this.state.reg_link,
+                "logo":this.state.logo,
+                "requirements":this.state.requirements,
+                "uimage":"https://lh3.googleusercontent.com/a-/AAuE7mAyoPmpjrx1JgcyRrDbKQeJFyVeMIYCy7Hyi2VW=k-s200",
+                "uname":"Nagulan S"
+            })
+            }).then(response => {
+            console.log(response);
+            });
     }
 
     render() { 
@@ -180,7 +205,7 @@ class AddJob extends React.Component {
                             <div style={{fontWeight:"500"}}>Application link</div>
                         </div>
                         <div style={{height:"10px"}}/>
-                        <div className="profile-add-button" style={{boxShadow:"0 0 10px gray",cursor:"pointer",alignItems:"center",backgroundColor:"#065285",padding:"10px",borderRadius:"10px",display:"flex",width:"calc(100% - 20px)",color:"white"}}>
+                        <div className="profile-add-button" onClick={this.postData.bind(this)} style={{boxShadow:"0 0 10px gray",cursor:"pointer",alignItems:"center",backgroundColor:"#065285",padding:"10px",borderRadius:"10px",display:"flex",width:"calc(100% - 20px)",color:"white"}}>
                             <PublishIcon  style={{fontSize:"30px"}}/>
                             <div style={{paddingLeft:"10px",}}>
                                 Submit

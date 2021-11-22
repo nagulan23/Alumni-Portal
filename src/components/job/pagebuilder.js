@@ -23,7 +23,7 @@ class Pagebuilder extends React.Component {
     var datalist=[];
     console.log("..........//");
     console.log(data);
-    fetch('https://77a8-223-187-127-66.ngrok.io/final/filterjob', {
+    fetch('http://localhost:8081/final/filterjob', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -40,7 +40,7 @@ class Pagebuilder extends React.Component {
           console.log(jlist);
           console.log(jlist.data);
           jlist.data.forEach((jid, i)  => {
-            fetch('https://77a8-223-187-127-66.ngrok.io/final/job', {
+            fetch('http://localhost:8081/final/job', {
               method: 'POST',
               headers: {
                 Accept: 'application/json',
@@ -67,7 +67,7 @@ class Pagebuilder extends React.Component {
   getData() {
     console.log("getting jobs............");
 
-    axios.get('https://77a8-223-187-127-66.ngrok.io/final/filterinfo')
+    axios.get('http://localhost:8081/final/filterinfo')
     .then(response =>{
       console.log(response.data);
       this.setState({role:response.data.role});
@@ -76,11 +76,11 @@ class Pagebuilder extends React.Component {
     });
 
     var datalist=[];
-    axios.get('https://77a8-223-187-127-66.ngrok.io/final/jobs')
+    axios.get('http://localhost:8081/final/jobs')
     .then(jlist=> {
       console.log(jlist.data.data);
       jlist.data.data.forEach((jid, i)  => {
-        fetch('https://77a8-223-187-127-66.ngrok.io/final/job', {
+        fetch('http://localhost:8081/final/job', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
