@@ -3,7 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 import c1 from '../../assets/waterfall.jpg';
 import ProfilePage from '../profile';
 import { withRouter } from "react-router-dom";
-class InBlogPage extends Component {
+class InBlogPage extends React.Component {
 
 
     state = {
@@ -20,7 +20,7 @@ class InBlogPage extends Component {
             <div >
                 <div style={{ height: '30px' }}></div>
                 <div style={{ paddingLeft: '35px', fontSize: '50px', fontWeight: 'bold' }}>
-                    THIS IS THE MOST AWAITED TECHNOLOGY THAT CHANGED THE WORLD
+                    {this.props.data.title}
                 </div>
                 <div style={{ height: '20px' }}></div>
                 <div style={{ display: 'flex', paddingLeft: '35px' }}>
@@ -104,4 +104,4 @@ class InBlogPage extends Component {
 }
 
 
-export default withRouter(InBlogPage);
+export default InBlogPage;

@@ -10,7 +10,7 @@ class Blogcard extends Component {
         return (
             <div >
             <div style={{ height: '10px' }}></div>
-                    <div style={{ paddingLeft: '75px' }}> 
+                    <div style={{ paddingLeft: '0px' }}> 
                     <div  className="Boxe" onClick={()=>this.props.history.push({pathname:"/inblog",state: this.props.data})}>
                     <div style={{ display: 'flex'}}>
                     <div>

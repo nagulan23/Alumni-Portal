@@ -122,7 +122,7 @@ class Header extends Component {
                         <Pagebuilder/>
                     </Route>
                     <Route exact path="/inblog">
-                        <InBlogPage/>
+                        <InBlogPage data={this.props.location.state}/>
                     </Route>
                     <Route exact path="/blog">
                         <BlogPage/>

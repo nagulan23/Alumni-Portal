@@ -51,6 +51,30 @@ class AddBlog extends React.Component {
         else
           return(<CancelIcon style={{color:"red"}} visible="true"/>);
     }
+
+    postData(){
+        console.log(this.state);
+        fetch('http://localhost:8081/final/addblog', {
+            method: 'POST',            
+            headers: {
+                Accept: 'application/json',
+            },
+            body: JSON.stringify({
+                "Token":"t101",
+                "blogid":'' +(Math.random()*1000),
+                "title":this.state.blog_title,
+                "date":this.state.date.toString(),
+                "time":this.state.time.toString(),
+                "genre":this.state.genre,
+                "content":this.state.content,
+                "Image":this.state.image,
+                "author":"Nagulan S"
+            })
+            }).then(response => {
+            console.log(response);
+            });
+    }
+
     render() { 
         return <div style={{display:"flex",width:"100%"}}>
                 <div style={{width:"calc( 80% - 20px)",minWidth:"700px"}}>
@@ -154,7 +178,7 @@ class AddBlog extends React.Component {
                         </div>
                         
                         <div style={{height:"10px"}}/>
-                        <div className="profile-add-button" style={{boxShadow:"0 0 10px gray",cursor:"pointer",alignItems:"center",backgroundColor:"#065285",padding:"10px",borderRadius:"10px",display:"flex",width:"calc(100% - 20px)",color:"white"}}>
+                        <div className="profile-add-button" onClick={this.postData.bind(this)} style={{boxShadow:"0 0 10px gray",cursor:"pointer",alignItems:"center",backgroundColor:"#065285",padding:"10px",borderRadius:"10px",display:"flex",width:"calc(100% - 20px)",color:"white"}}>
                             <PublishIcon  style={{fontSize:"30px"}}/>
                             <div style={{paddingLeft:"10px",}}>
                                 Submit

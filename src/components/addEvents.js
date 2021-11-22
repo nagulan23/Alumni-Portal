@@ -68,24 +68,21 @@ class AddEvent extends React.Component {
     postData(){
         console.log(this.state);
         fetch('http://localhost:8081/final/addevent', {
-            method: 'POST',
+            method: 'POST',            
             headers: {
                 Accept: 'application/json',
             },
             body: JSON.stringify({
-                "role":this.state.role,
-                "name":this.state.company_name,
-                "salaryl":this.state.salaryl,
-                "salaryh":this.state.salaryh,
-                "location":this.state.location,
-                "jobdescription":this.state.job_description,
                 "Token":"t101",
-                "jobid":'' +(Math.random()*1000),
-                "link":this.state.reg_link,
-                "logo":this.state.logo,
-                "requirements":this.state.requirements,
-                "uimage":"https://lh3.googleusercontent.com/a-/AAuE7mAyoPmpjrx1JgcyRrDbKQeJFyVeMIYCy7Hyi2VW=k-s200",
-                "uname":"Nagulan S"
+                "eventid":'' +(Math.random()*1000),
+                "Title": this.state.event_title,
+                "Event_image":this.state.poster,
+                "S_Data_Time":this.state.sdate,
+                "E_Data_Time":this.state.edate,
+                "Description":this.state.des,
+                "Register_link":this.state.reg_link,
+                "Bio":this.state.bio,
+                "People":"Nagulan S"
             })
             }).then(response => {
             console.log(response);
