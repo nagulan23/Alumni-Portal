@@ -21,11 +21,11 @@ class Eventbuilder extends React.Component {
   getData() {
     console.log("getting events............");
     var datalist=[];
-    axios.get('https://77a8-223-187-127-66.ngrok.io/final/events')
+    axios.get('http://localhost:8081/final/events')
     .then(elist=> {
       console.log(elist.data.data);
       elist.data.data.forEach((eid, i)  => {
-        fetch('https://77a8-223-187-127-66.ngrok.io/final/event', {
+        fetch('http://localhost:8081/final/event', {
           method: 'POST',
           headers: {
             Accept: 'application/json',

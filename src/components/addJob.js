@@ -65,7 +65,7 @@ class AddJob extends React.Component {
 
     postData(){
         console.log(this.state);
-        fetch('https://77a8-223-187-127-66.ngrok.io/final/addjob', {
+        fetch('http://localhost:8081/final/addjob', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

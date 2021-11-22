@@ -18,7 +18,7 @@ class MyEvents extends React.Component {
         console.log("getting events............");
     
         var datalist=[];
-        fetch('https://77a8-223-187-127-66.ngrok.io/final/myevents', {
+        fetch('http://localhost:8081/final/myevents', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
